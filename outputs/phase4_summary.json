@@ -1,0 +1,11 @@
+{
+  "batter_candidates_eligible": 254,
+  "bowler_candidates_eligible": 222,
+  "batter_min_pressure_balls": 30,
+  "bowler_min_pressure_legal_balls": 30,
+  "minimum_pressure_matches": 5,
+  "prior_exposure_balls": 60.0,
+  "prior_exposure_legal_balls": 60.0,
+  "rankings_status": "provisional_review_only",
+  "final_unstop_top10_created": false
+}

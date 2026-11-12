@@ -113,3 +113,35 @@ Run all tests:
 ```powershell
 python -m pytest -v
 ```
+
+
+## Phase 4 — Statistical ratings and reliability
+
+Run after Phase 3:
+
+```powershell
+python run_phase4.py
+```
+
+Phase 4 produces provisional review rankings only. It does not create the final Unstop Top 10.
+
+### Current working eligibility
+- Batters: at least 30 pressure balls across at least 5 pressure matches.
+- Bowlers: at least 30 pressure legal balls across at least 5 pressure matches.
+
+### Statistical method
+- Pressure rates shrink toward each player's own normal rate using exposure/(exposure + 60).
+- Direction-aware pressure-vs-normal deltas are robust-standardized using median/MAD, with clipping at +/-3.
+- Multiple weight schemes are compared for batting and bowling.
+- Match-level mean, standard deviation and approximate 95% intervals are reported.
+- Sensitivity tests compare alternative weights and minimum exposure thresholds.
+
+### Phase 4 outputs
+- `batter_ratings_all.csv`, `bowler_ratings_all.csv`
+- `provisional_batter_rankings.csv`, `provisional_bowler_rankings.csv`
+- `provisional_batter_top20_review.csv`, `provisional_bowler_top20_review.csv`
+- `ranking_sensitivity.csv`
+- `phase4_summary.json`
+- `reports/phase4_findings.md`
+
+The ratings are relative analytical indices, not probabilities. Eligibility thresholds and weights must be reviewed before final submission.
