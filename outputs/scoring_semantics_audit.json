@@ -1,0 +1,94 @@
+{
+  "runs_field_observation": "Observed values are 0\u20136 and can coexist with extras; treated as batter runs for this model.",
+  "extras1_observation": "Observed as a primary extra component; added to runs when reconstructing team total.",
+  "extras2_observation": "Observed as a second extra component, including some Overstep/other rows; added to extras1 and runs for team total.",
+  "illegal_delivery_types_observed": [
+    "wide",
+    "Overstep"
+  ],
+  "illegal_delivery_rule": "wide and Overstep do not consume a legal ball; this is an explicit modelling interpretation of observed extras_type values.",
+  "wicket_flag_observation": "is_wicket is the recorded dismissal flag. Wicket losses are counted from this flag; dismissal types are retained for later bowler-credit analysis.",
+  "innings_observed": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "super_over_rule": "Innings 3 and 4 are excluded from regulation-innings pressure classification and retained with is_super_over=True.",
+  "wicket_types": {
+    "Caught": 7557,
+    "Bowled": 1775,
+    "LBW": 709,
+    "RunOut": 600,
+    "Stump": 214,
+    "Hit Wicket": 17,
+    "Retire Out": 6,
+    "Obstracting the field": 2,
+    "Obstructing the field": 1
+  },
+  "extras_profile": [
+    {
+      "extras_type_norm": "",
+      "deliveries": 189167,
+      "batter_runs": 268285,
+      "extras1_runs": 1,
+      "extras2_runs": 1,
+      "wicket_rows": 10832
+    },
+    {
+      "extras_type_norm": "byes",
+      "deliveries": 529,
+      "batter_runs": 0,
+      "extras1_runs": 1000,
+      "extras2_runs": 0,
+      "wicket_rows": 1
+    },
+    {
+      "extras_type_norm": "legbyes",
+      "deliveries": 2748,
+      "batter_runs": 1,
+      "extras1_runs": 3603,
+      "extras2_runs": 0,
+      "wicket_rows": 0
+    },
+    {
+      "extras_type_norm": "other",
+      "deliveries": 264,
+      "batter_runs": 412,
+      "extras1_runs": 264,
+      "extras2_runs": 35,
+      "wicket_rows": 3
+    },
+    {
+      "extras_type_norm": "overstep",
+      "deliveries": 576,
+      "batter_runs": 852,
+      "extras1_runs": 576,
+      "extras2_runs": 48,
+      "wicket_rows": 5
+    },
+    {
+      "extras_type_norm": "penalty",
+      "deliveries": 1,
+      "batter_runs": 0,
+      "extras1_runs": 5,
+      "extras2_runs": 0,
+      "wicket_rows": 0
+    },
+    {
+      "extras_type_norm": "wide",
+      "deliveries": 7714,
+      "batter_runs": 0,
+      "extras1_runs": 9174,
+      "extras2_runs": 0,
+      "wicket_rows": 40
+    }
+  ],
+  "caveat": "These are dataset-observed field patterns, not a substitute for the provider's formal data dictionary. Validate edge cases against match scorecards before final player ratings.",
+  "row_count": 200999,
+  "wide_rows": 7714,
+  "overstep_rows": 576,
+  "super_over_rows": 38,
+  "regulation_pressure_eligible_rows": 200904,
+  "missing_match_metadata_rows": 0
+}

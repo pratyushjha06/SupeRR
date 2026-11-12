@@ -1,0 +1,16 @@
+{
+  "input_rows": 200999,
+  "classified_rows": 200999,
+  "eligible_rows": 200904,
+  "super_over_rows": 38,
+  "pressure_level_counts": {
+    "moderate": 83676,
+    "low": 78650,
+    "high": 28826,
+    "very_high": 9752
+  },
+  "pressure_context_counts": {
+    "first_innings": 105727,
+    "chase": 95177
+  }
+}

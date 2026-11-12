@@ -70,3 +70,8 @@ If you need to extract the supplied ZIP manually, extract the six CSVs from its 
 ## Reproducibility
 
 Keep the original raw CSV files unchanged. All generated profiles and charts are written to `outputs/`.
+
+
+## Phase 2 — Pressure classification
+
+Run `python run_phase2.py` after Phase 1 dependencies are installed. This reconstructs delivery-level pre-ball match state, treats `wide` and `Overstep` as illegal deliveries, excludes innings 3/4 from regulation pressure labels, and writes pressure outputs under `outputs/`. See `reports/phase2_findings.md` and `outputs/scoring_semantics_audit.json` for assumptions and observed data patterns.

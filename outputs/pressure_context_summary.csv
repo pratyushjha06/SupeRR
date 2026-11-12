@@ -1,0 +1,9 @@
+pressure_context,pressure_level,deliveries,matches,mean_score
+chase,high,12028,504,60.324943417382485
+chase,low,37826,786,15.970121185749788
+chase,moderate,35992,745,35.20922298585072
+chase,very_high,9331,426,88.38880007946698
+first_innings,high,16798,759,57.903102502610714
+first_innings,low,40824,858,14.69293356439122
+first_innings,moderate,47684,867,36.69101879916162
+first_innings,very_high,421,58,77.93610235278213
