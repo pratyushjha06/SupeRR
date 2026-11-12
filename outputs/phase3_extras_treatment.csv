@@ -1,0 +1,8 @@
+extras_type_norm,rows,batter_runs,extras1,extras2,bowler_runs_assigned,ambiguous_rows,scoring_anomaly_rows
+,189167,268285,1,1,268285,0,0
+byes,529,0,1000,0,0,0,0
+legbyes,2748,1,3603,0,0,0,1
+other,264,412,264,35,412,264,0
+overstep,576,852,576,48,1476,0,0
+penalty,1,0,5,0,0,0,0
+wide,7714,0,9174,0,9174,0,0

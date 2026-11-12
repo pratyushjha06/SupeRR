@@ -75,3 +75,41 @@ Keep the original raw CSV files unchanged. All generated profiles and charts are
 ## Phase 2 — Pressure classification
 
 Run `python run_phase2.py` after Phase 1 dependencies are installed. This reconstructs delivery-level pre-ball match state, treats `wide` and `Overstep` as illegal deliveries, excludes innings 3/4 from regulation pressure labels, and writes pressure outputs under `outputs/`. See `reports/phase2_findings.md` and `outputs/scoring_semantics_audit.json` for assumptions and observed data patterns.
+
+
+## Phase 3 — Player performance analysis
+
+Run after Phase 2:
+
+```powershell
+python run_phase3.py
+```
+
+Phase 3 reads `outputs/pressure_classified_deliveries.csv` and writes player-level pressure-versus-normal metrics, match-level consistency summaries, sample-size reports, and scoring-treatment audits into `outputs/`. It does **not** generate final player rankings.
+
+### Phase 3 outputs
+
+- `batting_pressure_vs_normal.csv` — player batting metrics split into pressure and normal groups.
+- `bowling_pressure_vs_normal.csv` — player bowling metrics split into pressure and normal groups.
+- `batting_player_group_metrics.csv` / `bowling_player_group_metrics.csv` — long-form group-level aggregates.
+- `batting_match_consistency.csv` / `bowling_match_consistency.csv` — match-level pressure metric mean, median and standard deviation.
+- `batting_sample_size_report.csv` / `bowling_sample_size_report.csv` — pressure exposure counts for later eligibility and reliability adjustments.
+- `phase3_extras_treatment.csv` / `phase3_dismissal_treatment.csv` — transparent treatment audits.
+- `phase3_summary.json` — execution summary.
+- `reports/phase3_findings.md` — methodology and limitations.
+
+### Performance definitions
+
+- Pressure deliveries: Phase 2 `high` and `very_high`.
+- Normal deliveries: Phase 2 `low` and `moderate`.
+- Batter balls faced: excludes wides; includes Overstep/no-ball deliveries.
+- Bowler legal balls: excludes wides and Overstep.
+- Bowler wickets: caught, bowled, LBW, stump and hit-wicket dismissal types; run-outs, retired-out and obstructing-field dismissals are not credited.
+- Bowler-conceded runs: batter runs plus wide/Overstep extras; byes, leg-byes and penalty extras are excluded. Ambiguous `other` extras are not charged to the bowler.
+- A source anomaly (one leg-byes-labelled row with `runs=1` and zero extra runs) is flagged and not charged to the bowler.
+
+Run all tests:
+
+```powershell
+python -m pytest -v
+```

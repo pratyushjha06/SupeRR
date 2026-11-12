@@ -1,0 +1,20 @@
+{
+  "input_deliveries": 200999,
+  "eligible_deliveries": 200904,
+  "batters_with_pressure_exposure": 729,
+  "bowlers_with_pressure_exposure": 506,
+  "pressure_batter_match_observations": 5159,
+  "pressure_bowler_match_observations": 4480,
+  "bowler_credit_dismissal_types": [
+    "bowled",
+    "caught",
+    "caught and bowled",
+    "caught&bowled",
+    "hit wicket",
+    "lbw",
+    "stump"
+  ],
+  "ambiguous_other_extra_deliveries": 264,
+  "bye_or_penalty_rows_with_nonzero_runs_field": 1,
+  "rankings_generated": false
+}
