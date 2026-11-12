@@ -1,0 +1,4 @@
+column,dtype,missing_count,missing_percent,unique_values
+comp_id,int64,0,0.0,141
+team_id,int64,0,0.0,38
+team_name,object,0,0.0,38

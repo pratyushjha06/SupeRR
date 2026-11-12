@@ -1,0 +1,5 @@
+column,dtype,missing_count,missing_percent,unique_values
+comp_id,int64,0,0.0,141
+comp_name,object,0,0.0,141
+match_format,object,0,0.0,2
+season,object,0,0.0,8

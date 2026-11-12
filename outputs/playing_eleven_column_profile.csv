@@ -1,0 +1,10 @@
+column,dtype,missing_count,missing_percent,unique_values
+match_id,int64,0,0.0,880
+team_id,int64,0,0.0,38
+player_id,int64,0,0.0,1082
+batting_order,float64,8678,30.577,13
+is_played,bool,0,0.0,2
+is_captain,object,8667,30.538,2
+is_wk,object,8667,30.538,2
+is_impact,int64,0,0.0,2
+is_impact_off,int64,0,0.0,2

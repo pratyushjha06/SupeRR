@@ -1,0 +1,7 @@
+column,dtype,missing_count,missing_percent,unique_values
+comp_id,int64,0,0.0,140
+comp_name,object,0,0.0,140
+team_id,int64,0,0.0,38
+team_name,object,0,0.0,38
+player_id,int64,0,0.0,1217
+player_name,object,0,0.0,1210
