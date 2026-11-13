@@ -184,3 +184,22 @@ Key Phase 4.2 outputs:
 - `reports/phase4_2_findings.md`
 
 Run tests with `python -m pytest -v`. Rankings remain provisional; no final Unstop Top 10 is generated.
+
+
+## Phase 4.3 — Candidate Validation Review
+
+Phase 4.3 adds review artifacts without changing the Phase 4.2 scoring engine or creating a final Unstop Top 10.
+
+Run the reproducible review-table generator after Phase 4 has been run:
+
+```powershell
+python run_phase4_3_review.py
+```
+
+Key deliverables:
+
+- `reports/phase4_3_candidate_validation.md` — interpretation, candidate risks and recommended review protocol.
+- `reports/PRESSURE-X_Phase4.3_Candidate_Validation.xlsx` — workbook with scope summary, all-eligible top 20s, stronger-tier shortlists, rank comparisons across weighting schemes and sensitivity results.
+- `outputs/phase4_3_*` — CSV review tables and summary JSON.
+
+The stronger-reliability-only lists are diagnostic shortlists, not replacement rankings. Final selection remains provisional and must be made only after reviewing the source metrics and competition requirements.
