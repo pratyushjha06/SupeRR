@@ -1,1 +1,26 @@
-# PRESSURE-X Phase 4 — Rating, Reliability and Sensitivity\n\n## Eligibility\n- Batters: at least 30 pressure balls and 5 pressure matches.\n- Bowlers: at least 30 pressure legal balls and 5 pressure matches.\n- These are transparent working thresholds for review, not universal statistical standards.\n\n## Shrinkage and normalization\n- Pressure rates are shrunk toward each player's normal rate with prior exposure of 60 balls/legal balls.\n- Reliability weight = exposure / (exposure + prior exposure).\n- Direction-aware metric deltas are converted to robust z-scores using median and MAD (fallback to standard deviation), clipped at +/-3.\n- Positive components always mean improvement under pressure.\n\n## Rating schemes\n- Batters: balanced, scoring-impact, survival and equal weights.\n- Bowlers: balanced, wicket-impact, control and equal weights.\n- Balanced score is the provisional default; alternative schemes are used for sensitivity checks.\n\n## Uncertainty and consistency\n- Match-level pressure strike rate (batters) and economy (bowlers) have mean, median, standard deviation and an approximate 95% interval around the mean using mean +/- 1.96*SD/sqrt(matches).\n- The interval is descriptive and assumes independent match observations; it is not a formal Bayesian posterior interval.\n- Low-exposure and few-match flags are retained in review tables.\n\n## Sensitivity\n- Top-10 overlap and rank-order correlation are compared across weight schemes.\n- Eligibility sensitivity is checked at 20, 30, 45, 60 and 90 pressure balls/legal balls while holding minimum matches constant.\n\n## Important caveats\n- Phase 2 pressure labels and Phase 3 metric semantics flow through unchanged; this phase does not independently revalidate scorecards.\n- The composite score is a transparent relative index, not a probability of success or an objective measure of player talent.\n- Provisional rankings must be manually reviewed for exposure, role/context and anomalous metric values before submission.\n- No final Unstop Top 10 is generated.\n\n## Outputs\n- `batter_ratings_all.csv`, `bowler_ratings_all.csv`\n- `provisional_batter_rankings.csv`, `provisional_bowler_rankings.csv`\n- `provisional_batter_top20_review.csv`, `provisional_bowler_top20_review.csv`\n- `ranking_sensitivity.csv`, `phase4_summary.json`
+# PRESSURE-X Phase 4.1 — Scope, Baseline and Reliability Engine
+
+## Competition scope
+- The original problem statement specifies IPL and T20I data. Phase 4.1 filters to those competitions only.
+- Classified deliveries before filter: 200,999; after filter: 194,014; excluded: 6,985.
+
+## Eligibility
+- Batters: >= 30 pressure balls, >= 5 pressure matches, >= 30 normal balls, >= 3 normal matches.
+- Bowlers: >= 30 pressure legal balls, >= 5 pressure matches, >= 30 normal legal balls, >= 3 normal matches.
+- Pressure and normal exposure are separate eligibility requirements. Missing or inadequate baselines are not ranked.
+
+## Shrinkage and normalization
+- Pressure rates are shrunk toward each player's normal rate using 60 prior balls/legal balls.
+- Direction-aware deltas are robust-z normalized using median/MAD, with standard-deviation fallback and +/-3 clipping.
+- Non-finite composite ratings are excluded from all ranked lists.
+
+## Match consistency and reliability
+- Match-level strike rate/economy summaries include ball-weighted mean and weighted dispersion, so matches contribute in proportion to pressure balls/legal balls.
+- The reported interval remains a descriptive approximation, not a formal Bayesian posterior interval.
+- Reliability tiers separate ineligible, limited-exposure and stronger-evidence candidates.
+
+## Sensitivity
+- Alternative weights and exposure thresholds are recalculated on the eligible IPL/T20I candidate pool.
+
+## Status
+- All rankings remain provisional for review. No final Unstop Top 10 is generated.

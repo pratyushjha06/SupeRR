@@ -145,3 +145,22 @@ Phase 4 produces provisional review rankings only. It does not create the final 
 - `reports/phase4_findings.md`
 
 The ratings are relative analytical indices, not probabilities. Eligibility thresholds and weights must be reviewed before final submission.
+
+
+## Phase 4.1 — competition scope, baseline eligibility and reliability
+
+Phase 4.1 supersedes the earlier Phase 4 runner. Run:
+
+```powershell
+python run_phase4.py
+```
+
+The runner now:
+- filters the analysis to IPL and T20I competitions only, as stated in the original challenge brief;
+- rebuilds Phase 3 performance tables on that scoped delivery set;
+- requires both pressure and normal exposure (batters: 30 balls and 3 normal matches; bowlers: 30 legal balls and 3 normal matches), in addition to the existing pressure thresholds;
+- excludes missing/non-finite ratings from ranked outputs;
+- calculates ball-weighted match-level consistency summaries;
+- reports reliability tiers and sensitivity on the scoped eligible pool.
+
+All rankings remain provisional. Phase 4.1 does **not** create a final Unstop Top 10.

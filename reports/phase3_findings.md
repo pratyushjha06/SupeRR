@@ -1,9 +1,9 @@
 # PRESSURE-X Phase 3 — Player Performance Analysis
 
-- Input deliveries: 200,999
-- Eligible regulation deliveries: 200,904
-- Batters with high/very-high pressure exposure: 729
-- Bowlers with high/very-high pressure exposure: 506
+- Input deliveries: 194,014
+- Eligible regulation deliveries: 193,933
+- Batters with high/very-high pressure exposure: 673
+- Bowlers with high/very-high pressure exposure: 467
 
 ## Batting methodology
 - Batter runs use the observed `runs` field; team runs are `runs + extras1_runs + extras_2_runs`.

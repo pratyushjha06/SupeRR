@@ -156,26 +156,40 @@ def _match_consistency(events: pd.DataFrame, role: str) -> pd.DataFrame:
             dots=("is_batter_dot","sum"), boundaries=("is_batter_boundary","sum")
         ).reset_index()
         g["metric"]=_safe_div(g["runs"]*100,g["balls"])
-        g=g[g.pressure_group.eq("pressure")]
-        return g.groupby(["striker_id","striker_name"]).agg(
-            pressure_match_count=("match_id","nunique"),
-            match_metric_mean=("metric","mean"),
-            match_metric_std=("metric","std"),
-            match_metric_median=("metric","median")
-        ).reset_index().rename(columns={"striker_id":"player_id","striker_name":"player_name"})
+        g=g[g.pressure_group.eq("pressure") & (g["balls"] > 0)].copy()
+        rows=[]
+        for (pid,pname), grp in g.groupby(["striker_id","striker_name"]):
+            w=grp["balls"].astype(float)
+            x=grp["metric"].astype(float)
+            wm=float(np.average(x,weights=w)) if w.sum()>0 else np.nan
+            wvar=float(np.average((x-wm)**2,weights=w)) if w.sum()>0 else np.nan
+            rows.append({"player_id":pid,"player_name":pname,
+                "pressure_match_count":int(grp["match_id"].nunique()),
+                "match_metric_mean":float(x.mean()),"match_metric_std":float(x.std(ddof=1)) if len(x)>1 else np.nan,
+                "match_metric_median":float(x.median()),"weighted_match_metric_mean":wm,
+                "weighted_match_metric_std":float(np.sqrt(wvar)) if pd.notna(wvar) else np.nan,
+                "consistency_exposure_balls":int(w.sum())})
+        return pd.DataFrame(rows)
     e=events.loc[events.analysis_eligible & events.bowler_id.notna()].copy()
     g=e.groupby(["bowler_id","bowler_name","match_id","pressure_group"],dropna=False).agg(
         runs=("bowler_runs_conceded","sum"), legal=("is_legal_delivery","sum"),
         wickets=("bowler_credit_wicket","sum")
     ).reset_index()
     g["metric"]=_safe_div(g["runs"]*6,g["legal"])
-    g=g[g.pressure_group.eq("pressure")]
-    return g.groupby(["bowler_id","bowler_name"]).agg(
-        pressure_match_count=("match_id","nunique"),
-        match_metric_mean=("metric","mean"),
-        match_metric_std=("metric","std"),
-        match_metric_median=("metric","median")
-    ).reset_index().rename(columns={"bowler_id":"player_id","bowler_name":"player_name"})
+    g=g[g.pressure_group.eq("pressure") & (g["legal"] > 0)].copy()
+    rows=[]
+    for (pid,pname), grp in g.groupby(["bowler_id","bowler_name"]):
+        w=grp["legal"].astype(float)
+        x=grp["metric"].astype(float)
+        wm=float(np.average(x,weights=w)) if w.sum()>0 else np.nan
+        wvar=float(np.average((x-wm)**2,weights=w)) if w.sum()>0 else np.nan
+        rows.append({"player_id":pid,"player_name":pname,
+            "pressure_match_count":int(grp["match_id"].nunique()),
+            "match_metric_mean":float(x.mean()),"match_metric_std":float(x.std(ddof=1)) if len(x)>1 else np.nan,
+            "match_metric_median":float(x.median()),"weighted_match_metric_mean":wm,
+            "weighted_match_metric_std":float(np.sqrt(wvar)) if pd.notna(wvar) else np.nan,
+            "consistency_exposure_balls":int(w.sum())})
+    return pd.DataFrame(rows)
 
 def run_phase3(input_csv: Path, output_dir: Path, report_dir: Path) -> dict:
     input_csv, output_dir, report_dir = Path(input_csv),Path(output_dir),Path(report_dir)

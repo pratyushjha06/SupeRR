@@ -8,6 +8,9 @@ import pandas as pd
 BATTER_MIN_BALLS=30
 BOWLER_MIN_LEGAL_BALLS=30
 MIN_PRESSURE_MATCHES=5
+BATTER_MIN_NORMAL_BALLS=30
+BOWLER_MIN_NORMAL_LEGAL_BALLS=30
+MIN_NORMAL_MATCHES=3
 PRIOR_BALLS=60.0
 PRIOR_LEGAL_BALLS=60.0
 
@@ -40,7 +43,14 @@ def build_batter_ratings(bat: pd.DataFrame, sample: pd.DataFrame, consistency: p
     d=bat.merge(sample[["striker_id","pressure_balls","pressure_matches"]],on="striker_id",how="left",suffixes=("","_sample"))
     d["pressure_balls"]=d["pressure_balls"].fillna(d.get("pressure_balls",0)).fillna(0)
     d["pressure_matches"]=_num(d,"pressure_matches").fillna(0)
-    d["eligible"]= (d.pressure_balls>=BATTER_MIN_BALLS)&(d.pressure_matches>=MIN_PRESSURE_MATCHES)
+    d["normal_balls_faced"]=_num(d,"normal_balls_faced").fillna(0)
+    d["normal_exposure_matches"]=_num(d,"normal_exposure_matches").fillna(0)
+    d["eligible"]= (
+        (d.pressure_balls>=BATTER_MIN_BALLS)
+        &(d.pressure_matches>=MIN_PRESSURE_MATCHES)
+        &(d.normal_balls_faced>=BATTER_MIN_NORMAL_BALLS)
+        &(d.normal_exposure_matches>=MIN_NORMAL_MATCHES)
+    )
     # Smoothed pressure rates shrink toward each player's normal rate.
     for metric, exposure, prior in [
         ("strike_rate","pressure_balls",PRIOR_BALLS),
@@ -61,14 +71,23 @@ def build_batter_ratings(bat: pd.DataFrame, sample: pd.DataFrame, consistency: p
     for k,v in z.items(): d["z_"+k]=v
     # Match consistency: reward higher mean pressure SR, penalize volatility via uncertainty not extra score.
     d=d.drop(columns=["pressure_match_count","match_metric_mean","match_metric_std","match_metric_median"],errors="ignore")
-    d=d.merge(consistency[["player_id","pressure_match_count","match_metric_mean","match_metric_std","match_metric_median"]],
+    consistency_cols=["player_id","pressure_match_count","match_metric_mean","match_metric_std","match_metric_median",
+                      "weighted_match_metric_mean","weighted_match_metric_std","consistency_exposure_balls"]
+    d=d.merge(consistency.reindex(columns=consistency_cols),
               left_on="striker_id",right_on="player_id",how="left")
-    d["match_metric_se"]=d["match_metric_std"]/np.sqrt(d["pressure_match_count"].clip(lower=1))
-    d["match_metric_ci_low"]=d["match_metric_mean"]-1.96*d["match_metric_se"]
-    d["match_metric_ci_high"]=d["match_metric_mean"]+1.96*d["match_metric_se"]
+    d["weighted_match_metric_mean"]=_num(d,"weighted_match_metric_mean")
+    d["weighted_match_metric_std"]=_num(d,"weighted_match_metric_std")
+    d["consistency_exposure_balls"]=_num(d,"consistency_exposure_balls").fillna(0)
+    d["match_metric_se"]=d["weighted_match_metric_std"]/np.sqrt(d["pressure_match_count"].clip(lower=1))
+    d["match_metric_ci_low"]=d["weighted_match_metric_mean"]-1.96*d["match_metric_se"]
+    d["match_metric_ci_high"]=d["weighted_match_metric_mean"]+1.96*d["match_metric_se"]
     d["uncertainty_flag"]=np.select(
-        [d.pressure_balls<60,d.pressure_match_count<8,d.match_metric_se.isna()],
-        ["low_exposure","few_pressure_matches","insufficient_match_variance"],default="standard"
+        [~d.eligible,d.pressure_balls<60,d.normal_balls_faced<60,d.pressure_match_count<8,d.match_metric_se.isna()],
+        ["baseline_or_pressure_ineligible","low_pressure_exposure","low_normal_baseline","few_pressure_matches","insufficient_match_variance"],default="standard"
+    )
+    d["reliability_tier"]=np.select(
+        [~d.eligible,(d.pressure_balls<60)|(d.normal_balls_faced<60)|(d.pressure_match_count<8)],
+        ["not_eligible","limited"],default="stronger"
     )
     weights={
         "balanced":{"z_sr_component":0.35,"z_dot_component":0.20,"z_boundary_component":0.15,"z_dismissal_component":0.30},
@@ -85,7 +104,14 @@ def build_bowler_ratings(bowl: pd.DataFrame, sample: pd.DataFrame, consistency: 
     d=bowl.merge(sample[["bowler_id","pressure_legal_balls","pressure_matches"]],on="bowler_id",how="left",suffixes=("","_sample"))
     d["pressure_legal_balls"]=d["pressure_legal_balls"].fillna(0)
     d["pressure_matches"]=_num(d,"pressure_matches").fillna(0)
-    d["eligible"]=(d.pressure_legal_balls>=BOWLER_MIN_LEGAL_BALLS)&(d.pressure_matches>=MIN_PRESSURE_MATCHES)
+    d["normal_legal_balls"]=_num(d,"normal_legal_balls").fillna(0)
+    d["normal_exposure_matches"]=_num(d,"normal_exposure_matches").fillna(0)
+    d["eligible"]=(
+        (d.pressure_legal_balls>=BOWLER_MIN_LEGAL_BALLS)
+        &(d.pressure_matches>=MIN_PRESSURE_MATCHES)
+        &(d.normal_legal_balls>=BOWLER_MIN_NORMAL_LEGAL_BALLS)
+        &(d.normal_exposure_matches>=MIN_NORMAL_MATCHES)
+    )
     # Shrink pressure rates toward the player's normal rates. For economy/dot/boundary rates,
     # exposure is legal balls; wickets per over uses the same exposure proxy.
     for metric in ["economy","dot_ball_pct","wickets_per_over","boundary_conceded_pct","charged_extras_per_over"]:
@@ -101,14 +127,23 @@ def build_bowler_ratings(bowl: pd.DataFrame, sample: pd.DataFrame, consistency: 
     z=_score_components(d,specs)
     for k,v in z.items(): d["z_"+k]=v
     d=d.drop(columns=["pressure_match_count","match_metric_mean","match_metric_std","match_metric_median"],errors="ignore")
-    d=d.merge(consistency[["player_id","pressure_match_count","match_metric_mean","match_metric_std","match_metric_median"]],
+    consistency_cols=["player_id","pressure_match_count","match_metric_mean","match_metric_std","match_metric_median",
+                      "weighted_match_metric_mean","weighted_match_metric_std","consistency_exposure_balls"]
+    d=d.merge(consistency.reindex(columns=consistency_cols),
               left_on="bowler_id",right_on="player_id",how="left")
-    d["match_metric_se"]=d["match_metric_std"]/np.sqrt(d["pressure_match_count"].clip(lower=1))
-    d["match_metric_ci_low"]=d["match_metric_mean"]-1.96*d["match_metric_se"]
-    d["match_metric_ci_high"]=d["match_metric_mean"]+1.96*d["match_metric_se"]
+    d["weighted_match_metric_mean"]=_num(d,"weighted_match_metric_mean")
+    d["weighted_match_metric_std"]=_num(d,"weighted_match_metric_std")
+    d["consistency_exposure_balls"]=_num(d,"consistency_exposure_balls").fillna(0)
+    d["match_metric_se"]=d["weighted_match_metric_std"]/np.sqrt(d["pressure_match_count"].clip(lower=1))
+    d["match_metric_ci_low"]=d["weighted_match_metric_mean"]-1.96*d["match_metric_se"]
+    d["match_metric_ci_high"]=d["weighted_match_metric_mean"]+1.96*d["match_metric_se"]
     d["uncertainty_flag"]=np.select(
-        [d.pressure_legal_balls<60,d.pressure_match_count<8,d.match_metric_se.isna()],
-        ["low_exposure","few_pressure_matches","insufficient_match_variance"],default="standard"
+        [~d.eligible,d.pressure_legal_balls<60,d.normal_legal_balls<60,d.pressure_match_count<8,d.match_metric_se.isna()],
+        ["baseline_or_pressure_ineligible","low_pressure_exposure","low_normal_baseline","few_pressure_matches","insufficient_match_variance"],default="standard"
+    )
+    d["reliability_tier"]=np.select(
+        [~d.eligible,(d.pressure_legal_balls<60)|(d.normal_legal_balls<60)|(d.pressure_match_count<8)],
+        ["not_eligible","limited"],default="stronger"
     )
     weights={
         "balanced":{"z_economy_component":0.30,"z_dot_component":0.20,"z_wicket_component":0.25,"z_boundary_component":0.15,"z_extras_component":0.10},
@@ -122,18 +157,19 @@ def build_bowler_ratings(bowl: pd.DataFrame, sample: pd.DataFrame, consistency: 
     return d,weights
 
 def _rank(df, id_col, name_col, rating_col):
-    x=df.loc[df.eligible].copy().sort_values(rating_col,ascending=False)
+    score=pd.to_numeric(df[rating_col],errors="coerce")
+    x=df.loc[df.eligible & np.isfinite(score)].copy().sort_values(rating_col,ascending=False)
     x["provisional_rank"]=range(1,len(x)+1)
     cols=[id_col,name_col,"provisional_rank",rating_col,"pressure_balls" if "pressure_balls" in x else "pressure_legal_balls",
           "pressure_matches","uncertainty_flag","match_metric_mean","match_metric_std","match_metric_ci_low","match_metric_ci_high"]
     return x[[c for c in cols if c in x.columns]]
 
 def _sensitivity(df, id_col, rating_cols, role):
-    base=df.loc[df.eligible].sort_values("rating_balanced",ascending=False)
+    base=df.loc[df.eligible & np.isfinite(pd.to_numeric(df["rating_balanced"],errors="coerce"))].sort_values("rating_balanced",ascending=False)
     base_ids=base[id_col].tolist()
     rows=[]
     for col in rating_cols:
-        ranked=df.loc[df.eligible].sort_values(col,ascending=False)
+        ranked=df.loc[df.eligible & np.isfinite(pd.to_numeric(df[col],errors="coerce"))].sort_values(col,ascending=False)
         ids=ranked[id_col].tolist()
         n=min(10,len(base_ids),len(ids))
         overlap=len(set(base_ids[:n])&set(ids[:n]))/max(n,1)
@@ -147,7 +183,12 @@ def _sensitivity(df, id_col, rating_cols, role):
     # Exposure threshold sensitivity: rerank the balanced rating after changing eligibility cutoffs.
     for threshold in [20,30,45,60,90]:
         exposure="pressure_balls" if role=="batter" else "pressure_legal_balls"
-        elig=df[(df[exposure]>=threshold)&(df.pressure_matches>=MIN_PRESSURE_MATCHES)].sort_values("rating_balanced",ascending=False)
+        normal_exposure="normal_balls_faced" if role=="batter" else "normal_legal_balls"
+        normal_matches="normal_exposure_matches"
+        elig=df[(df[exposure]>=threshold)&(df.pressure_matches>=MIN_PRESSURE_MATCHES)
+                &(df[normal_exposure]>=BATTER_MIN_NORMAL_BALLS if role=="batter" else df[normal_exposure]>=BOWLER_MIN_NORMAL_LEGAL_BALLS)
+                &(df[normal_matches]>=MIN_NORMAL_MATCHES)
+                &np.isfinite(pd.to_numeric(df["rating_balanced"],errors="coerce"))].sort_values("rating_balanced",ascending=False)
         n=min(10,len(base_ids),len(elig))
         overlap=len(set(base_ids[:n])&set(elig[id_col].head(n)))/max(n,1)
         rows.append({"role":role,"scheme":f"min_exposure_{threshold}","top10_overlap_vs_balanced":overlap,"rank_order_correlation":np.nan})
@@ -155,6 +196,25 @@ def _sensitivity(df, id_col, rating_cols, role):
 
 def run_phase4(outputs:Path,reports:Path):
     outputs,reports=Path(outputs),Path(reports)
+    # Strict problem-statement scope: IPL and T20I only.
+    metadata_path=outputs/"matches_with_competition_metadata.csv"
+    delivery_path=outputs/"pressure_classified_deliveries.csv"
+    if not metadata_path.exists() or not delivery_path.exists():
+        raise FileNotFoundError("Phase 4.1 requires matches_with_competition_metadata.csv and pressure_classified_deliveries.csv. Run Phase 1–2 first.")
+    meta=pd.read_csv(metadata_path,usecols=["match_id","comp_name","match_format"])
+    is_ipl=meta["comp_name"].astype(str).str.fullmatch(r"IPL\s+\d{4}",case=False,na=False)
+    is_t20i=meta["match_format"].astype(str).str.upper().eq("T20I")
+    allowed=set(meta.loc[is_ipl|is_t20i,"match_id"])
+    all_deliveries=pd.read_csv(delivery_path,low_memory=False)
+    before=len(all_deliveries)
+    scoped=all_deliveries[all_deliveries["match_id"].isin(allowed)].copy()
+    excluded=before-len(scoped)
+    scoped_path=outputs/"phase4_1_ipl_t20i_deliveries.csv"
+    scoped.to_csv(scoped_path,index=False)
+    from src.performance_engine import run_phase3
+    phase3_summary=run_phase3(scoped_path,outputs,reports)
+    scoped_path.unlink(missing_ok=True)
+
     bat=pd.read_csv(outputs/"batting_pressure_vs_normal.csv")
     bowl=pd.read_csv(outputs/"bowling_pressure_vs_normal.csv")
     bs=pd.read_csv(outputs/"batting_sample_size_report.csv")
@@ -173,60 +233,59 @@ def run_phase4(outputs:Path,reports:Path):
     wsens=_sensitivity(wr,"bowler_id",[f"rating_{x}" for x in ww],"bowler")
     sens=pd.concat([bsens,wsens],ignore_index=True)
     sens.to_csv(outputs/"ranking_sensitivity.csv",index=False)
-    # Compact top 20 review sheets (not final Unstop lists).
     brank.head(20).to_csv(outputs/"provisional_batter_top20_review.csv",index=False)
     wrank.head(20).to_csv(outputs/"provisional_bowler_top20_review.csv",index=False)
     summary={
-        "batter_candidates_eligible":int(br.eligible.sum()),
-        "bowler_candidates_eligible":int(wr.eligible.sum()),
+        "competition_scope":"IPL and T20I only",
+        "classified_deliveries_before_scope_filter":int(before),
+        "classified_deliveries_after_scope_filter":int(len(scoped)),
+        "excluded_out_of_scope_deliveries":int(excluded),
+        "batter_candidates_pressure_eligible":int(((br.pressure_balls>=BATTER_MIN_BALLS)&(br.pressure_matches>=MIN_PRESSURE_MATCHES)).sum()),
+        "bowler_candidates_pressure_eligible":int(((wr.pressure_legal_balls>=BOWLER_MIN_LEGAL_BALLS)&(wr.pressure_matches>=MIN_PRESSURE_MATCHES)).sum()),
+        "batter_candidates_final_eligible":int(br.eligible.sum()),
+        "bowler_candidates_final_eligible":int(wr.eligible.sum()),
+        "batter_candidates_excluded_for_baseline":int((((br.pressure_balls>=BATTER_MIN_BALLS)&(br.pressure_matches>=MIN_PRESSURE_MATCHES))&~br.eligible).sum()),
+        "bowler_candidates_excluded_for_baseline":int((((wr.pressure_legal_balls>=BOWLER_MIN_LEGAL_BALLS)&(wr.pressure_matches>=MIN_PRESSURE_MATCHES))&~wr.eligible).sum()),
         "batter_min_pressure_balls":BATTER_MIN_BALLS,
         "bowler_min_pressure_legal_balls":BOWLER_MIN_LEGAL_BALLS,
+        "batter_min_normal_balls":BATTER_MIN_NORMAL_BALLS,
+        "bowler_min_normal_legal_balls":BOWLER_MIN_NORMAL_LEGAL_BALLS,
         "minimum_pressure_matches":MIN_PRESSURE_MATCHES,
+        "minimum_normal_matches":MIN_NORMAL_MATCHES,
         "prior_exposure_balls":PRIOR_BALLS,
         "prior_exposure_legal_balls":PRIOR_LEGAL_BALLS,
+        "weighted_match_consistency":True,
         "rankings_status":"provisional_review_only",
         "final_unstop_top10_created":False
     }
     with open(outputs/"phase4_summary.json","w",encoding="utf-8") as f:json.dump(summary,f,indent=2)
     reports.mkdir(parents=True,exist_ok=True)
     lines=[
-        "# PRESSURE-X Phase 4 — Rating, Reliability and Sensitivity","",
+        "# PRESSURE-X Phase 4.1 — Scope, Baseline and Reliability Engine","",
+        "## Competition scope",
+        "- The original problem statement specifies IPL and T20I data. Phase 4.1 filters to those competitions only.",
+        f"- Classified deliveries before filter: {before:,}; after filter: {len(scoped):,}; excluded: {excluded:,}.",
+        "",
         "## Eligibility",
-        f"- Batters: at least {BATTER_MIN_BALLS} pressure balls and {MIN_PRESSURE_MATCHES} pressure matches.",
-        f"- Bowlers: at least {BOWLER_MIN_LEGAL_BALLS} pressure legal balls and {MIN_PRESSURE_MATCHES} pressure matches.",
-        "- These are transparent working thresholds for review, not universal statistical standards.",
+        f"- Batters: >= {BATTER_MIN_BALLS} pressure balls, >= {MIN_PRESSURE_MATCHES} pressure matches, >= {BATTER_MIN_NORMAL_BALLS} normal balls, >= {MIN_NORMAL_MATCHES} normal matches.",
+        f"- Bowlers: >= {BOWLER_MIN_LEGAL_BALLS} pressure legal balls, >= {MIN_PRESSURE_MATCHES} pressure matches, >= {BOWLER_MIN_NORMAL_LEGAL_BALLS} normal legal balls, >= {MIN_NORMAL_MATCHES} normal matches.",
+        "- Pressure and normal exposure are separate eligibility requirements. Missing or inadequate baselines are not ranked.",
         "",
         "## Shrinkage and normalization",
-        f"- Pressure rates are shrunk toward each player's normal rate with prior exposure of {PRIOR_BALLS:.0f} balls/legal balls.",
-        "- Reliability weight = exposure / (exposure + prior exposure).",
-        "- Direction-aware metric deltas are converted to robust z-scores using median and MAD (fallback to standard deviation), clipped at +/-3.",
-        "- Positive components always mean improvement under pressure.",
+        f"- Pressure rates are shrunk toward each player's normal rate using {PRIOR_BALLS:.0f} prior balls/legal balls.",
+        "- Direction-aware deltas are robust-z normalized using median/MAD, with standard-deviation fallback and +/-3 clipping.",
+        "- Non-finite composite ratings are excluded from all ranked lists.",
         "",
-        "## Rating schemes",
-        "- Batters: balanced, scoring-impact, survival and equal weights.",
-        "- Bowlers: balanced, wicket-impact, control and equal weights.",
-        "- Balanced score is the provisional default; alternative schemes are used for sensitivity checks.",
-        "",
-        "## Uncertainty and consistency",
-        "- Match-level pressure strike rate (batters) and economy (bowlers) have mean, median, standard deviation and an approximate 95% interval around the mean using mean +/- 1.96*SD/sqrt(matches).",
-        "- The interval is descriptive and assumes independent match observations; it is not a formal Bayesian posterior interval.",
-        "- Low-exposure and few-match flags are retained in review tables.",
+        "## Match consistency and reliability",
+        "- Match-level strike rate/economy summaries include ball-weighted mean and weighted dispersion, so matches contribute in proportion to pressure balls/legal balls.",
+        "- The reported interval remains a descriptive approximation, not a formal Bayesian posterior interval.",
+        "- Reliability tiers separate ineligible, limited-exposure and stronger-evidence candidates.",
         "",
         "## Sensitivity",
-        "- Top-10 overlap and rank-order correlation are compared across weight schemes.",
-        "- Eligibility sensitivity is checked at 20, 30, 45, 60 and 90 pressure balls/legal balls while holding minimum matches constant.",
+        "- Alternative weights and exposure thresholds are recalculated on the eligible IPL/T20I candidate pool.",
         "",
-        "## Important caveats",
-        "- Phase 2 pressure labels and Phase 3 metric semantics flow through unchanged; this phase does not independently revalidate scorecards.",
-        "- The composite score is a transparent relative index, not a probability of success or an objective measure of player talent.",
-        "- Provisional rankings must be manually reviewed for exposure, role/context and anomalous metric values before submission.",
-        "- No final Unstop Top 10 is generated.",
-        "",
-        "## Outputs",
-        "- `batter_ratings_all.csv`, `bowler_ratings_all.csv`",
-        "- `provisional_batter_rankings.csv`, `provisional_bowler_rankings.csv`",
-        "- `provisional_batter_top20_review.csv`, `provisional_bowler_top20_review.csv`",
-        "- `ranking_sensitivity.csv`, `phase4_summary.json`"
+        "## Status",
+        "- All rankings remain provisional for review. No final Unstop Top 10 is generated."
     ]
-    (reports/"phase4_findings.md").write_text("\\n".join(lines),encoding="utf-8")
+    (reports/"phase4_findings.md").write_text("\n".join(lines),encoding="utf-8")
     return summary

@@ -1,10 +1,10 @@
 {
-  "input_deliveries": 200999,
-  "eligible_deliveries": 200904,
-  "batters_with_pressure_exposure": 729,
-  "bowlers_with_pressure_exposure": 506,
-  "pressure_batter_match_observations": 5159,
-  "pressure_bowler_match_observations": 4480,
+  "input_deliveries": 194014,
+  "eligible_deliveries": 193933,
+  "batters_with_pressure_exposure": 673,
+  "bowlers_with_pressure_exposure": 467,
+  "pressure_batter_match_observations": 4960,
+  "pressure_bowler_match_observations": 4319,
   "bowler_credit_dismissal_types": [
     "bowled",
     "caught",
@@ -14,7 +14,7 @@
     "lbw",
     "stump"
   ],
-  "ambiguous_other_extra_deliveries": 264,
-  "bye_or_penalty_rows_with_nonzero_runs_field": 1,
+  "ambiguous_other_extra_deliveries": 260,
+  "bye_or_penalty_rows_with_nonzero_runs_field": 0,
   "rankings_generated": false
 }
