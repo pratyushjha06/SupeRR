@@ -1,0 +1,21 @@
+balanced_rank,striker_name,rating_balanced,reliability_tier,uncertainty_flag,pressure_balls,normal_balls_faced,pressure_matches,normal_exposure_matches,weighted_match_metric_mean,weighted_match_metric_std,consistency_coverage_ratio,rank_Balanced,rank_Scoring impact,rank_Survival,rank_Equal weights,review_risk
+1,Matthew Wade,2.78914710812851,stronger,standard,162.0,265.0,14.0,24.0,175.92592592592592,43.59794656935529,1.0,1,1,1,1,No listed low-exposure flag; still observational
+2,Kieron Pollard,2.5856305632959486,limited,standard,127.0,84.0,12.0,10.0,141.73228346456693,76.18288451182883,1.0,2,2,3,2,limited tier: misses at least one stronger threshold
+3,Anuj Rawat,2.496343721807621,limited,standard,97.0,169.0,9.0,17.0,148.4536082474227,77.69629820955485,1.0,3,3,4,3,limited tier: misses at least one stronger threshold
+4,Towhid Hridoy,2.414119435607991,limited,few_pressure_matches,128.0,804.0,6.0,49.0,158.59375,28.553900567199108,1.0,4,5,5,5,pressure matches <8
+5,Nurul Hasan,2.4115032230782845,limited,standard,96.0,141.0,12.0,17.0,158.33333333333334,77.93131975201368,1.0,5,4,6,4,limited tier: misses at least one stronger threshold
+6,Gareth Delany,2.2828423274822813,stronger,standard,168.0,128.0,16.0,23.0,147.61904761904762,60.76583357131762,1.0,6,7,7,7,No listed low-exposure flag; still observational
+7,Mosaddek Hossain,2.235494959601347,limited,low_normal_baseline,77.0,36.0,6.0,5.0,154.54545454545453,46.33965771959432,1.0,7,43,2,12,normal baseline <60; pressure matches <8
+8,Jason Holder,2.170464279267683,stronger,standard,262.0,185.0,41.0,29.0,168.3206106870229,82.11640350224734,1.0,8,6,9,6,No listed low-exposure flag; still observational
+9,Fakhar Zaman,2.0762395688375466,limited,low_pressure_exposure,48.0,815.0,7.0,46.0,227.0833333333333,55.64935038625966,1.0,9,8,12,8,pressure exposure <60; pressure matches <8
+10,Aiden Markram,2.050200549783441,stronger,standard,185.0,1486.0,15.0,91.0,178.3783783783784,42.1101462739132,1.0,10,9,15,9,No listed low-exposure flag; still observational
+11,Dasun Shanaka,2.035847315069913,stronger,standard,310.0,464.0,32.0,48.0,168.70967741935485,60.135746153988336,1.0,11,10,17,10,No listed low-exposure flag; still observational
+12,Curtis Campher,2.0288459159483367,limited,standard,68.0,458.0,8.0,34.0,161.76470588235293,54.113707839825565,1.0,12,14,13,13,limited tier: misses at least one stronger threshold
+13,Sikandar Raza,2.008185388135316,stronger,standard,186.0,816.0,15.0,56.0,174.7311827956989,44.0020431359792,1.0,13,11,18,11,No listed low-exposure flag; still observational
+14,Jaker Ali Anik,1.922063032219548,stronger,standard,200.0,312.0,17.0,30.0,164.0,56.118447968591774,1.0,14,12,21,14,No listed low-exposure flag; still observational
+15,Babar Azam,1.890204493641756,limited,low_pressure_exposure,48.0,1133.0,6.0,52.0,200.0,53.24833425573143,1.0,15,13,23,15,pressure exposure <60; pressure matches <8
+16,Gulbadin Naib,1.8865592766344508,limited,low_pressure_exposure,42.0,160.0,5.0,13.0,173.8095238095238,79.78236260654685,1.0,16,37,8,22,pressure exposure <60; pressure matches <8
+17,Tristan Stubbs,1.8639470489597612,stronger,standard,385.0,696.0,30.0,57.0,176.1038961038961,67.83279226100724,1.0,17,16,24,17,No listed low-exposure flag; still observational
+18,M Shahrukh Khan,1.863135323917806,stronger,standard,147.0,263.0,22.0,33.0,186.39455782312925,85.41464834050954,1.0,18,15,26,16,No listed low-exposure flag; still observational
+19,Ryan Burl,1.8530444359390064,stronger,standard,189.0,517.0,17.0,41.0,151.85185185185185,73.03422628012727,1.0,19,17,25,18,No listed low-exposure flag; still observational
+20,Marco Jansen,1.8079442585971344,limited,standard,217.0,60.0,28.0,10.0,139.63133640552996,83.13939114343958,1.0,20,30,20,20,limited tier: misses at least one stronger threshold

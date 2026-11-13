@@ -1,0 +1,21 @@
+format,rank,player,rating_balanced,reliability_tier,uncertainty_flag
+IPL,1,Umran Malik,2.7933219196806527,limited,few_pressure_matches
+IPL,2,Sunil Narine,1.96162778906416,stronger,standard
+IPL,3,Mohit Sharma,1.8171620124325534,stronger,standard
+IPL,4,Andre Russell,1.7996058549327758,stronger,standard
+IPL,5,Sai Kishore,1.7263047051898823,limited,standard
+IPL,6,Anshul Kamboj,1.7079568259818594,limited,standard
+IPL,7,Brijesh Sharma,1.5455698708586032,limited,low_pressure_exposure
+IPL,8,Ashwani Kumar,1.4861237880586293,limited,low_pressure_exposure
+IPL,9,Rasikh Salam,1.3816197614403876,stronger,standard
+IPL,10,Harshit Rana,1.3716821580925858,stronger,standard
+T20I,1,Shadab Khan,2.589958422165988,stronger,standard
+T20I,2,Mohammad Nawaz,2.3800711072998855,stronger,standard
+T20I,3,Jamie Overton,2.3224453124258204,limited,standard
+T20I,4,Abrar Ahmed,2.283858169481362,stronger,standard
+T20I,5,Matthew Humphreys,2.1665306252596337,limited,low_pressure_exposure
+T20I,6,Nitish Reddy,2.0931540519573737,limited,standard
+T20I,7,Akeal Hosein,2.047568451207239,limited,standard
+T20I,8,Gudakesh Motie,1.8434132969071144,limited,standard
+T20I,9,Sean Abbott,1.8289510096525443,limited,standard
+T20I,10,Marco Jansen,1.8241844606725919,limited,low_pressure_exposure

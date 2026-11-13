@@ -1,0 +1,21 @@
+balanced_rank,bowler_name,rating_balanced,reliability_tier,uncertainty_flag,pressure_legal_balls,normal_legal_balls,pressure_matches,normal_exposure_matches,weighted_match_metric_mean,weighted_match_metric_std,consistency_coverage_ratio,rank_Balanced,rank_Wicket impact,rank_Control,rank_Equal weights,review_risk
+1,Umran Malik,2.51334907173432,limited,standard,116.0,446.0,13.0,30.0,7.344827586206897,4.914458612178895,1.0,1,2,1,5,limited tier: misses at least one stronger threshold
+2,Andre Russell,2.468699912872081,stronger,standard,203.0,550.0,28.0,49.0,9.87192118226601,4.2630959063040255,1.0,2,1,4,1,No listed low-exposure flag; still observational
+3,Shadab Khan,2.375132375267728,stronger,standard,148.0,684.0,17.0,40.0,6.567567567567568,4.630967050653049,1.0,3,3,3,3,No listed low-exposure flag; still observational
+4,Sunil Narine,2.2160403841865817,stronger,standard,232.0,1298.0,29.0,66.0,5.586206896551724,2.888926979345455,1.0,4,4,6,6,No listed low-exposure flag; still observational
+5,Abrar Ahmed,2.2048245677013383,stronger,standard,204.0,560.0,23.0,35.0,4.794117647058823,2.6747955481222125,1.0,5,16,2,2,No listed low-exposure flag; still observational
+6,Mohammad Nawaz,2.17816737351332,stronger,standard,130.0,874.0,16.0,49.0,5.446153846153846,4.233104250740009,1.0,6,7,5,7,No listed low-exposure flag; still observational
+7,Jamie Overton,2.046756116167914,stronger,standard,154.0,344.0,14.0,26.0,7.246753246753247,2.902621072737745,1.0,7,8,14,4,No listed low-exposure flag; still observational
+8,Mohit Sharma,1.994401821228429,stronger,standard,255.0,396.0,24.0,28.0,8.988235294117647,4.085315055801991,1.0,8,5,10,9,No listed low-exposure flag; still observational
+9,Matthew Humphreys,1.9754975343458827,limited,low_pressure_exposure,46.0,259.0,5.0,14.0,4.826086956521739,2.246954747365273,1.0,9,6,9,15,pressure exposure <60; pressure matches <8
+10,Anshul Kamboj,1.9582543458780368,limited,standard,85.0,406.0,8.0,25.0,8.188235294117646,4.473961575598387,1.0,10,10,11,10,limited tier: misses at least one stronger threshold
+11,Sai Kishore,1.9582086843621327,limited,standard,98.0,367.0,10.0,23.0,7.285714285714286,2.6381646151146727,1.0,11,11,7,16,limited tier: misses at least one stronger threshold
+12,Akeal Hosein,1.9134213056630511,limited,standard,108.0,1585.0,14.0,79.0,5.555555555555555,2.06316160357572,1.0,12,9,16,13,limited tier: misses at least one stronger threshold
+13,Brijesh Sharma,1.8017884165156528,limited,low_pressure_exposure,50.0,227.0,8.0,13.0,6.6,5.312736472964646,1.0,13,25,8,14,pressure exposure <60
+14,Jofra Archer,1.738422472328785,stronger,standard,183.0,1078.0,30.0,56.0,7.868852459016393,4.617190636404035,1.0,14,13,27,8,No listed low-exposure flag; still observational
+15,Shardul Thakur,1.7233855563941791,stronger,standard,239.0,732.0,29.0,48.0,9.414225941422592,4.148529437776966,1.0,15,18,15,22,No listed low-exposure flag; still observational
+16,Sean Abbott,1.69845768176855,limited,standard,80.0,364.0,11.0,21.0,8.475,3.636778892685905,1.0,16,14,21,12,limited tier: misses at least one stronger threshold
+17,Shamar Joseph,1.6840032014402435,limited,standard,102.0,373.0,12.0,24.0,8.705882352941176,4.908552430865064,1.0,17,21,17,19,limited tier: misses at least one stronger threshold
+18,Ashwani Kumar,1.6419699008541615,limited,low_pressure_exposure,45.0,139.0,5.0,10.0,8.0,4.881451774684599,1.0,18,28,12,25,pressure exposure <60; pressure matches <8
+19,Nitish Reddy,1.6271076925376051,stronger,standard,172.0,395.0,22.0,33.0,9.627906976744184,4.65138997656247,1.0,19,12,23,23,No listed low-exposure flag; still observational
+20,Gudakesh Motie,1.574370334855181,limited,standard,86.0,652.0,11.0,38.0,6.837209302325581,3.1031134594531093,1.0,20,17,28,17,limited tier: misses at least one stronger threshold

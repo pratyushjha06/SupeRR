@@ -1,0 +1,11 @@
+rank,striker_name,rating_balanced,reliability_tier,uncertainty_flag
+1,Matthew Wade,2.78914710812851,stronger,standard
+2,Kieron Pollard,2.5856305632959486,limited,standard
+3,Anuj Rawat,2.496343721807621,limited,standard
+4,Towhid Hridoy,2.414119435607991,limited,few_pressure_matches
+5,Nurul Hasan,2.4115032230782845,limited,standard
+6,Gareth Delany,2.2828423274822813,stronger,standard
+7,Mosaddek Hossain,2.235494959601347,limited,low_normal_baseline
+8,Jason Holder,2.170464279267683,stronger,standard
+9,Fakhar Zaman,2.0762395688375466,limited,low_pressure_exposure
+10,Aiden Markram,2.050200549783441,stronger,standard

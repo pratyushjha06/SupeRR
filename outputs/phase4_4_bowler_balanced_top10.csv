@@ -1,0 +1,11 @@
+rank,bowler_name,rating_balanced,reliability_tier,uncertainty_flag
+1,Umran Malik,2.51334907173432,limited,standard
+2,Andre Russell,2.468699912872081,stronger,standard
+3,Shadab Khan,2.375132375267728,stronger,standard
+4,Sunil Narine,2.2160403841865817,stronger,standard
+5,Abrar Ahmed,2.2048245677013383,stronger,standard
+6,Mohammad Nawaz,2.17816737351332,stronger,standard
+7,Jamie Overton,2.046756116167914,stronger,standard
+8,Mohit Sharma,1.994401821228429,stronger,standard
+9,Matthew Humphreys,1.9754975343458827,limited,low_pressure_exposure
+10,Anshul Kamboj,1.9582543458780368,limited,standard

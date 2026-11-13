@@ -1,0 +1,21 @@
+format,rank,player,rating_balanced,reliability_tier,uncertainty_flag
+IPL,1,Anuj Rawat,2.1922586668094994,limited,standard
+IPL,2,Liam Livingstone,2.1890326706001226,limited,standard
+IPL,3,M Shahrukh Khan,1.9150756329927094,stronger,standard
+IPL,4,Jos Buttler,1.8740219545748449,limited,low_pressure_exposure
+IPL,5,Ayush Badoni,1.7980497674834062,stronger,standard
+IPL,6,Rashid Khan,1.737065955076414,limited,low_normal_baseline
+IPL,7,Kieron Pollard,1.6084990179623737,limited,low_normal_baseline
+IPL,8,Sanju Samson,1.5545665490245084,limited,standard
+IPL,9,Aiden Markram,1.5403565247893658,limited,standard
+IPL,10,Sameer Rizvi,1.5317554799408926,limited,few_pressure_matches
+T20I,1,Nurul Hasan,2.506347317992547,limited,standard
+T20I,2,Towhid Hridoy,2.4920620239862568,limited,few_pressure_matches
+T20I,3,Mosaddek Hossain,2.4597039829581657,limited,low_normal_baseline
+T20I,4,Gareth Delany,2.3688979152302956,stronger,standard
+T20I,5,Jason Holder,2.339630269072798,stronger,standard
+T20I,6,Suryakumar Yadav,2.2268574234675813,limited,few_pressure_matches
+T20I,7,Curtis Campher,2.0725405841055604,limited,standard
+T20I,8,Fakhar Zaman,2.0446494405198656,limited,low_pressure_exposure
+T20I,9,Tristan Stubbs,2.0372680007490813,limited,few_pressure_matches
+T20I,10,Matthew Wade,1.9827234046013968,stronger,standard

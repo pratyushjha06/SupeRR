@@ -1,0 +1,41 @@
+scheme,rank,player,rating_balanced,reliability_tier,uncertainty_flag,rating_scoring_impact,rating_survival,rating_equal
+Balanced,1,Matthew Wade,2.78914710812851,stronger,standard,,,
+Balanced,2,Kieron Pollard,2.5856305632959486,limited,standard,,,
+Balanced,3,Anuj Rawat,2.496343721807621,limited,standard,,,
+Balanced,4,Towhid Hridoy,2.414119435607991,limited,few_pressure_matches,,,
+Balanced,5,Nurul Hasan,2.4115032230782845,limited,standard,,,
+Balanced,6,Gareth Delany,2.2828423274822813,stronger,standard,,,
+Balanced,7,Mosaddek Hossain,2.235494959601347,limited,low_normal_baseline,,,
+Balanced,8,Jason Holder,2.170464279267683,stronger,standard,,,
+Balanced,9,Fakhar Zaman,2.0762395688375466,limited,low_pressure_exposure,,,
+Balanced,10,Aiden Markram,2.050200549783441,stronger,standard,,,
+Scoring impact,1,Matthew Wade,,stronger,standard,2.894573554064255,,
+Scoring impact,2,Kieron Pollard,,limited,standard,2.774999042646036,,
+Scoring impact,3,Anuj Rawat,,limited,standard,2.6577250619020925,,
+Scoring impact,4,Nurul Hasan,,limited,standard,2.642033276186152,,
+Scoring impact,5,Towhid Hridoy,,limited,few_pressure_matches,2.6308776187989062,,
+Scoring impact,6,Jason Holder,,stronger,standard,2.585232139633842,,
+Scoring impact,7,Gareth Delany,,stronger,standard,2.5524354434117047,,
+Scoring impact,8,Fakhar Zaman,,limited,low_pressure_exposure,2.538119784418773,,
+Scoring impact,9,Aiden Markram,,stronger,standard,2.5225446424523947,,
+Scoring impact,10,Dasun Shanaka,,stronger,standard,2.5179236575349564,,
+Survival,1,Matthew Wade,,stronger,standard,,2.6837206621927656,
+Survival,2,Mosaddek Hossain,,limited,low_normal_baseline,,2.511693122223841,
+Survival,3,Kieron Pollard,,limited,standard,,2.396262083945862,
+Survival,4,Anuj Rawat,,limited,standard,,2.335345473928616,
+Survival,5,Towhid Hridoy,,limited,few_pressure_matches,,2.1965087675002093,
+Survival,6,Nurul Hasan,,limited,standard,,2.1853084233191007,
+Survival,7,Gareth Delany,,stronger,standard,,2.017353935525209,
+Survival,8,Gulbadin Naib,,limited,low_pressure_exposure,,1.782086030371739,
+Survival,9,Jason Holder,,stronger,standard,,1.7556964189015256,
+Survival,10,Shashank Singh,,stronger,standard,,1.633920474442616,
+Equal weights,1,Matthew Wade,,stronger,standard,,,2.824289256773759
+Equal weights,2,Kieron Pollard,,limited,standard,,,2.6249984044100585
+Equal weights,3,Anuj Rawat,,limited,standard,,,2.564246457645784
+Equal weights,4,Nurul Hasan,,limited,standard,,,2.4467413271304235
+Equal weights,5,Towhid Hridoy,,limited,few_pressure_matches,,,2.387637647721067
+Equal weights,6,Jason Holder,,stronger,standard,,,2.30872023272307
+Equal weights,7,Gareth Delany,,stronger,standard,,,2.2951063120763435
+Equal weights,8,Fakhar Zaman,,limited,low_pressure_exposure,,,2.230199640697956
+Equal weights,9,Aiden Markram,,stronger,standard,,,2.2042410707539912
+Equal weights,10,Dasun Shanaka,,stronger,standard,,,2.196539429224928

@@ -1,0 +1,41 @@
+scheme,rank,player,rating_balanced,reliability_tier,uncertainty_flag,rating_wicket_impact,rating_control,rating_equal
+Balanced,1,Umran Malik,2.51334907173432,limited,standard,,,
+Balanced,2,Andre Russell,2.468699912872081,stronger,standard,,,
+Balanced,3,Shadab Khan,2.375132375267728,stronger,standard,,,
+Balanced,4,Sunil Narine,2.2160403841865817,stronger,standard,,,
+Balanced,5,Abrar Ahmed,2.2048245677013383,stronger,standard,,,
+Balanced,6,Mohammad Nawaz,2.17816737351332,stronger,standard,,,
+Balanced,7,Jamie Overton,2.046756116167914,stronger,standard,,,
+Balanced,8,Mohit Sharma,1.994401821228429,stronger,standard,,,
+Balanced,9,Matthew Humphreys,1.9754975343458827,limited,low_pressure_exposure,,,
+Balanced,10,Anshul Kamboj,1.9582543458780368,limited,standard,,,
+Wicket impact,1,Andre Russell,,stronger,standard,2.558564207684741,,
+Wicket impact,2,Umran Malik,,limited,standard,2.51334907173432,,
+Wicket impact,3,Shadab Khan,,stronger,standard,2.425423669595255,,
+Wicket impact,4,Sunil Narine,,stronger,standard,2.139140137586199,,
+Wicket impact,5,Mohit Sharma,,stronger,standard,2.096181338548932,,
+Wicket impact,6,Matthew Humphreys,,limited,low_pressure_exposure,2.075845118069364,,
+Wicket impact,7,Mohammad Nawaz,,stronger,standard,2.0700985175293,,
+Wicket impact,8,Jamie Overton,,stronger,standard,2.0011456729855355,,
+Wicket impact,9,Akeal Hosein,,limited,standard,1.9865444939858403,,
+Wicket impact,10,Anshul Kamboj,,limited,standard,1.9778722103450617,,
+Control,1,Umran Malik,,limited,standard,,2.75667453586716,
+Control,2,Abrar Ahmed,,stronger,standard,,2.522712921637493,
+Control,3,Shadab Khan,,stronger,standard,,2.4727293605405074,
+Control,4,Andre Russell,,stronger,standard,,2.428380562987427,
+Control,5,Mohammad Nawaz,,stronger,standard,,2.4156451483585224,
+Control,6,Sunil Narine,,stronger,standard,,2.4031009022714653,
+Control,7,Sai Kishore,,limited,standard,,2.212707802905367,
+Control,8,Brijesh Sharma,,limited,low_pressure_exposure,,2.1854294248645467,
+Control,9,Matthew Humphreys,,limited,low_pressure_exposure,,2.1552958086629728,
+Control,10,Mohit Sharma,,stronger,standard,,2.078471824547425,
+Equal weights,1,Andre Russell,,stronger,standard,,,2.426292017854329
+Equal weights,2,Abrar Ahmed,,stronger,standard,,,2.2617042624896064
+Equal weights,3,Shadab Khan,,stronger,standard,,,2.143106158604361
+Equal weights,4,Jamie Overton,,stronger,standard,,,2.0465596906524324
+Equal weights,5,Umran Malik,,limited,standard,,,2.0266981434686406
+Equal weights,6,Sunil Narine,,stronger,standard,,,1.9827138113039555
+Equal weights,7,Mohammad Nawaz,,stronger,standard,,,1.8677646225902091
+Equal weights,8,Jofra Archer,,stronger,standard,,,1.84508968469446
+Equal weights,9,Mohit Sharma,,stronger,standard,,,1.8030134523088528
+Equal weights,10,Anshul Kamboj,,limited,standard,,,1.6311688956152914

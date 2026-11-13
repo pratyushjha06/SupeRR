@@ -1,0 +1,10 @@
+Requirement,Brief status,Current project evidence,Remaining action
+Two ordered top-10 lists,Required,Provisional rankings exist; final lists not selected,Not complete until final Unstop lists are locked
+Pressure definition and rationale,Required,First-innings and chase heuristic defined with explicit weighted indicators,Explain why these thresholds/weights are meaningful; add pressure-context examples
+Batting and bowling metrics and baselines,Required,Pressure-vs-normal metrics and direction-aware composite ratings implemented,Document every metric definition and run/extras/dismissal treatment
+Fair comparisons across sample sizes and contexts,Required,"Minimum exposure, match counts, reliability tiers, two-sample exposure adjustment",No explicit IPL-vs-T20I/season normalization demonstrated; assess format/context effects
+Use of IPL and T20I data,Required,"Strict IPL/T20I filter applied; 194,014 deliveries retained",Document how pooled comparison handles differences in format/season
+Evidence for final top 10 and ordering,Required,Top-20 evidence and sensitivity tables available,Need final per-player evidence table for chosen 10 and rank rationale
+Consistency and limitations,Required,Weighted match-level mean/dispersion and limitations documented,Consistency metric is descriptive and does not yet enter score; state this clearly
+Reproducibility,Implied by transparency,"Source code, data, tests and outputs included",Run from clean environment and include versioned run instructions
+Optional journey photos/video,Optional,Not prepared,No impact on scoring per brief
