@@ -245,3 +245,14 @@ Key outputs:
 - `outputs/phase4_6_summary.json`
 - `reports/phase4_6_combined_format_candidate_review.md`
 - `reports/PRESSURE-X_Phase4.6_Combined_Format_Evidence.xlsx`
+
+
+## Phase 4.7 — Candidate-by-Candidate Review
+
+Run:
+
+```powershell
+python run_phase4_7_review.py
+```
+
+This generates the two candidate review CSVs for the pooled Top-20 batter and bowler pools. The review rubric prioritizes candidates for human review; it is not a new scoring model and does not automatically accept or reject players. See `reports/phase4_7_candidate_by_candidate_review.md` and `reports/PRESSURE-X_Phase4.7_Candidate_Review.xlsx` for the complete rationale and evidence. No final Top 10 is created.
