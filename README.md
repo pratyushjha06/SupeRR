@@ -225,3 +225,23 @@ Outputs:
 - `outputs/phase4_5_pooled_bowler_season_stability.csv`
 
 Important: scores are re-standardized within each format-year subset. Compare recurrence and rank positions within a subset; do not compare raw rating values across formats or years. Phase 4.5 is an audit, not a final selection phase.
+
+
+## Phase 4.6 — Combined IPL/T20I Candidate Evidence Review
+
+Run after Phase 4 has generated the scoped pressure-classified deliveries and candidate files:
+
+```powershell
+python run_phase4_6_review.py
+```
+
+This creates format-specific candidate metrics for the pooled Top-20 batter and bowler pools, plus format exposure shares. It does **not** create a new composite rating or final Top 10. The pooled balanced rating remains the provisional ordering; format-specific ratings are within-format diagnostics and must not be averaged or compared numerically across formats.
+
+Key outputs:
+- `outputs/phase4_6_batter_format_evidence.csv`
+- `outputs/phase4_6_bowler_format_evidence.csv`
+- `outputs/phase4_6_batter_format_metrics_long.csv`
+- `outputs/phase4_6_bowler_format_metrics_long.csv`
+- `outputs/phase4_6_summary.json`
+- `reports/phase4_6_combined_format_candidate_review.md`
+- `reports/PRESSURE-X_Phase4.6_Combined_Format_Evidence.xlsx`
