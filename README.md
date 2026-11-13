@@ -203,3 +203,25 @@ Key deliverables:
 - `outputs/phase4_3_*` — CSV review tables and summary JSON.
 
 The stronger-reliability-only lists are diagnostic shortlists, not replacement rankings. Final selection remains provisional and must be made only after reviewing the source metrics and competition requirements.
+
+
+## Phase 4.5 — Format and Season Fairness Analysis
+
+Run this after the Phase 4.4 outputs have been generated:
+
+```powershell
+python run_phase4_5_review.py
+```
+
+Phase 4.5 reruns Phase 3 and the Phase 4 rating logic separately for each IPL competition year and T20I calendar year. It creates format-year ranking tables and recurrence diagnostics for the pooled Top 10.
+
+Outputs:
+- `reports/phase4_5_format_season_fairness.md`
+- `reports/PRESSURE-X_Phase4.5_Format_Season_Fairness.xlsx`
+- `outputs/phase4_5_format_year_summary.csv`
+- `outputs/phase4_5_batter_year_top10.csv`
+- `outputs/phase4_5_bowler_year_top10.csv`
+- `outputs/phase4_5_pooled_batter_season_stability.csv`
+- `outputs/phase4_5_pooled_bowler_season_stability.csv`
+
+Important: scores are re-standardized within each format-year subset. Compare recurrence and rank positions within a subset; do not compare raw rating values across formats or years. Phase 4.5 is an audit, not a final selection phase.

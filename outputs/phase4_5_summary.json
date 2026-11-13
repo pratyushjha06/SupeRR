@@ -1,0 +1,96 @@
+{
+  "phase": "4.5",
+  "status": "format_season_robustness_analysis_only",
+  "final_unstop_top10_created": false,
+  "season_grouping": "IPL competition year; T20I calendar year",
+  "format_year_groups": 10,
+  "t20i_years_without_full_batter_top10": [
+    "2023",
+    "2026"
+  ],
+  "pooled_batter_top10_recurrence": [
+    {
+      "player": "Matthew Wade",
+      "format_year_top10_count": 1
+    },
+    {
+      "player": "Kieron Pollard",
+      "format_year_top10_count": 2
+    },
+    {
+      "player": "Anuj Rawat",
+      "format_year_top10_count": 0
+    },
+    {
+      "player": "Towhid Hridoy",
+      "format_year_top10_count": 0
+    },
+    {
+      "player": "Nurul Hasan",
+      "format_year_top10_count": 1
+    },
+    {
+      "player": "Gareth Delany",
+      "format_year_top10_count": 0
+    },
+    {
+      "player": "Mosaddek Hossain",
+      "format_year_top10_count": 1
+    },
+    {
+      "player": "Jason Holder",
+      "format_year_top10_count": 2
+    },
+    {
+      "player": "Fakhar Zaman",
+      "format_year_top10_count": 0
+    },
+    {
+      "player": "Aiden Markram",
+      "format_year_top10_count": 0
+    }
+  ],
+  "pooled_bowler_top10_recurrence": [
+    {
+      "player": "Umran Malik",
+      "format_year_top10_count": 0
+    },
+    {
+      "player": "Andre Russell",
+      "format_year_top10_count": 1
+    },
+    {
+      "player": "Shadab Khan",
+      "format_year_top10_count": 1
+    },
+    {
+      "player": "Sunil Narine",
+      "format_year_top10_count": 3
+    },
+    {
+      "player": "Abrar Ahmed",
+      "format_year_top10_count": 2
+    },
+    {
+      "player": "Mohammad Nawaz",
+      "format_year_top10_count": 1
+    },
+    {
+      "player": "Jamie Overton",
+      "format_year_top10_count": 0
+    },
+    {
+      "player": "Mohit Sharma",
+      "format_year_top10_count": 2
+    },
+    {
+      "player": "Matthew Humphreys",
+      "format_year_top10_count": 0
+    },
+    {
+      "player": "Anshul Kamboj",
+      "format_year_top10_count": 1
+    }
+  ],
+  "warning": "Year/format scores are re-standardized within each subset and are not directly comparable across subsets."
+}
