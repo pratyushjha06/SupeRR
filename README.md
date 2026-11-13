@@ -164,3 +164,23 @@ The runner now:
 - reports reliability tiers and sensitivity on the scoped eligible pool.
 
 All rankings remain provisional. Phase 4.1 does **not** create a final Unstop Top 10.
+
+## Phase 4.2 — Two-sample reliability and consistency refinement
+
+Run `python run_phase4.py` after Phase 1 and Phase 2 have been completed. Phase 4 reruns Phase 3 on the IPL/T20I-only delivery subset and regenerates the player metrics and rankings.
+
+Phase 4.2 refinements:
+- Pressure-vs-normal metric differences are discounted using separate pressure and normal exposure weights: `n / (n + 60)` for each sample. Their product scales the observed difference. This is a transparent reliability heuristic, not a formal Bayesian posterior or inferential confidence interval.
+- The consistency-table merge now removes overlapping pre-existing columns before merging, preserving one canonical set of weighted match metrics.
+- Weighted match mean and dispersion are retained as descriptive consistency diagnostics. The project no longer reports pseudo-confidence intervals derived from weighted match-level aggregates.
+- `stronger` reliability requires at least 120 pressure balls/legal balls, 120 normal balls/legal balls, 10 pressure matches and 5 normal matches. Eligible candidates below any of these thresholds are marked `limited`.
+- Expanded top-20 review CSVs retain pressure and normal metrics, adjusted deltas, component scores, exposure, reliability and consistency fields.
+
+Key Phase 4.2 outputs:
+- `provisional_batter_rankings.csv`, `provisional_bowler_rankings.csv`
+- `provisional_batter_top20_review.csv`, `provisional_bowler_top20_review.csv`
+- `batter_ratings_all.csv`, `bowler_ratings_all.csv`
+- `ranking_sensitivity.csv`, `phase4_summary.json`
+- `reports/phase4_2_findings.md`
+
+Run tests with `python -m pytest -v`. Rankings remain provisional; no final Unstop Top 10 is generated.

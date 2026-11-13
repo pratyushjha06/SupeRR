@@ -25,7 +25,8 @@ def test_bowler_directional_components():
     bowl=pd.DataFrame([dict(bowler_id=2,bowler_name="B",pressure_economy=7,normal_economy=9,
         pressure_dot_ball_pct=40,normal_dot_ball_pct=30,pressure_wickets_per_over=0.8,normal_wickets_per_over=0.4,
         pressure_boundary_conceded_pct=10,normal_boundary_conceded_pct=20,
-        pressure_charged_extras_per_over=0.1,normal_charged_extras_per_over=0.2)])
+        pressure_charged_extras_per_over=0.1,normal_charged_extras_per_over=0.2,
+        normal_legal_balls=100,normal_exposure_matches=5)])
     sample=pd.DataFrame([dict(bowler_id=2,pressure_legal_balls=100,pressure_matches=8)])
     consistency=pd.DataFrame([dict(player_id=2,pressure_match_count=8,match_metric_mean=7,match_metric_std=1,match_metric_median=7)])
     out,_=build_bowler_ratings(bowl,sample,consistency)

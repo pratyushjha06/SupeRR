@@ -9,6 +9,16 @@
   "bowler_candidates_final_eligible": 210,
   "batter_candidates_excluded_for_baseline": 94,
   "bowler_candidates_excluded_for_baseline": 0,
+  "batter_reliability_tiers": {
+    "limited": 97,
+    "stronger": 54
+  },
+  "bowler_reliability_tiers": {
+    "limited": 112,
+    "stronger": 98
+  },
+  "batter_consistency_records": 671,
+  "bowler_consistency_records": 467,
   "batter_min_pressure_balls": 30,
   "bowler_min_pressure_legal_balls": 30,
   "batter_min_normal_balls": 30,
@@ -18,6 +28,14 @@
   "prior_exposure_balls": 60.0,
   "prior_exposure_legal_balls": 60.0,
   "weighted_match_consistency": true,
+  "consistency_intervals_reported": false,
+  "two_sample_reliability_adjustment": true,
+  "strong_reliability_thresholds": {
+    "pressure_balls_or_legal_balls": 120,
+    "normal_balls_or_legal_balls": 120,
+    "pressure_matches": 10,
+    "normal_matches": 5
+  },
   "rankings_status": "provisional_review_only",
   "final_unstop_top10_created": false
 }

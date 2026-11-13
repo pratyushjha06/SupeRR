@@ -1,4 +1,4 @@
-# PRESSURE-X Phase 4.1 — Scope, Baseline and Reliability Engine
+# PRESSURE-X Phase 4.2 — Two-Sample Reliability and Consistency Refinement
 
 ## Competition scope
 - The original problem statement specifies IPL and T20I data. Phase 4.1 filters to those competitions only.
@@ -16,7 +16,9 @@
 
 ## Match consistency and reliability
 - Match-level strike rate/economy summaries include ball-weighted mean and weighted dispersion, so matches contribute in proportion to pressure balls/legal balls.
-- The reported interval remains a descriptive approximation, not a formal Bayesian posterior interval.
+- Consistency mean and weighted dispersion are descriptive diagnostics only; no confidence interval is reported from weighted match aggregates.
+- Pressure-vs-normal deltas are discounted using separate pressure- and normal-exposure reliability weights. This is a transparent heuristic, not a formal posterior model.
+- Stronger-evidence tier requires >= 120 pressure balls/legal balls, >= 120 normal balls/legal balls, >= 10 pressure matches and >= 5 normal matches.
 - Reliability tiers separate ineligible, limited-exposure and stronger-evidence candidates.
 
 ## Sensitivity
