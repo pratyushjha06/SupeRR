@@ -256,3 +256,16 @@ python run_phase4_7_review.py
 ```
 
 This generates the two candidate review CSVs for the pooled Top-20 batter and bowler pools. The review rubric prioritizes candidates for human review; it is not a new scoring model and does not automatically accept or reject players. See `reports/phase4_7_candidate_by_candidate_review.md` and `reports/PRESSURE-X_Phase4.7_Candidate_Review.xlsx` for the complete rationale and evidence. No final Top 10 is created.
+
+
+## Phase 4.8 — Match-Level Candidate Evidence Validation
+
+Run:
+
+```powershell
+python run_phase4_8_review.py
+```
+
+This reconstructs pressure/normal metrics per player per match for the pooled Top-15 batter and bowler candidate pools. It creates candidate-level median comparisons and match-level records. It is a diagnostic validation layer, not a new rating model; it does not create the final Top 10.
+
+See `reports/phase4_8_match_level_candidate_validation.md` and `reports/PRESSURE-X_Phase4.8_Match_Level_Validation.xlsx`.
