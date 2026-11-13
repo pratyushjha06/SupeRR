@@ -1,7 +1,7 @@
 # PRESSURE-X Phase 4.8 — Match-Level Candidate Evidence Validation
 
 ## Purpose
-This phase independently reconstructs candidate performance at the player-match level for the pooled Top 15 batters and Top 15 bowlers. It checks whether the pooled Top-10 candidate cases remain directionally supported when the evidence is viewed as match-level distributions rather than only pooled aggregate rates.
+This phase independently reconstructs candidate performance at the player-match level for the pooled Top 20 batters and Top 20 bowlers. It checks whether the pooled Top-10 candidate cases remain directionally supported when the evidence is viewed as match-level distributions rather than only pooled aggregate rates.
 
 It is a validation layer, not a new ranking formula. It does not modify pooled ratings, change eligibility thresholds, or produce the final Unstop Top 10.
 

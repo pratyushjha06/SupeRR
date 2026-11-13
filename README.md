@@ -269,3 +269,14 @@ python run_phase4_8_review.py
 This reconstructs pressure/normal metrics per player per match for the pooled Top-15 batter and bowler candidate pools. It creates candidate-level median comparisons and match-level records. It is a diagnostic validation layer, not a new rating model; it does not create the final Top 10.
 
 See `reports/phase4_8_match_level_candidate_validation.md` and `reports/PRESSURE-X_Phase4.8_Match_Level_Validation.xlsx`.
+
+
+## Phase 4.9 — Final Cut-Line Challenge
+
+Run:
+
+```powershell
+python run_phase4_9_review.py
+```
+
+Compares the rank-10 incumbent against every rank-11-to-20 challenger for batters and bowlers. Uses the balanced rating gap, alternate weighting sensitivity, reliability tier, uncertainty flags and match-level median diagnostics. It does not generate final Top-10 lists. See `reports/phase4_9_final_cutline_challenge.md` and `reports/PRESSURE-X_Phase4.9_Cutline_Challenge.xlsx`.

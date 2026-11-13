@@ -1,8 +1,9 @@
 {
   "in_scope_pressure_or_normal_regulation_deliveries": 193933,
-  "batter_candidates": 15,
-  "bowler_candidates": 15,
-  "batter_match_group_records": 747,
-  "bowler_match_group_records": 849,
-  "final_top10_created": false
+  "batter_candidates": 20,
+  "bowler_candidates": 20,
+  "batter_match_group_records": 1003,
+  "bowler_match_group_records": 1036,
+  "final_top10_created": false,
+  "phase4_9_cutline_review_added": true
 }

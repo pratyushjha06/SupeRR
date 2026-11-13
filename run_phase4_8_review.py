@@ -66,8 +66,8 @@ def main():
     bowl["wickets_per_over"]=6*bowl.wickets/bowl.legal_balls.replace(0,np.nan)
     bowl["boundary_pct"]=100*bowl.boundaries/bowl.legal_balls.replace(0,np.nan)
 
-    bt=pd.read_csv(OUT/"phase4_3_batter_top20_full.csv").head(15)
-    wt=pd.read_csv(OUT/"phase4_3_bowler_top20_full.csv").head(15)
+    bt=pd.read_csv(OUT/"phase4_3_batter_top20_full.csv")
+    wt=pd.read_csv(OUT/"phase4_3_bowler_top20_full.csv")
     bs=summarize_match(bat,"striker_id","striker_name",["sr","dot_pct","boundary_pct","dismissal_rate"],"balls")
     ws=summarize_match(bowl,"bowler_id","bowler_name",["economy","dot_pct","wickets_per_over","boundary_pct"],"legal_balls")
     ba=bt[["balanced_rank","striker_id","striker_name","reliability_tier","uncertainty_flag","rating_balanced"]].merge(

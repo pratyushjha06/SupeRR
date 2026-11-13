@@ -1,0 +1,11 @@
+role,omitted_rank,omitted_candidate,cutoff_candidate,balanced_rating_gap_vs_cutoff,omitted_reliability,cutoff_reliability,omitted_uncertainty,cutoff_uncertainty,omitted_match_favourable,cutoff_match_favourable,omitted_pressure_matches,omitted_normal_matches,rating_wicket_impact_gap_vs_cutoff,rating_control_gap_vs_cutoff,rating_equal_gap_vs_cutoff
+bowler,11,Sai Kishore,Anshul Kamboj,4.566151590412737e-05,limited,limited,standard,standard,4/4,3/4,10,23,0.02508601672598676,-0.14311820794616992,0.19287598567936248
+bowler,12,Akeal Hosein,Anshul Kamboj,0.04483304021498569,limited,limited,standard,standard,2/4,3/4,14,79,-0.008672283640778655,0.18145873661319079,0.11426819167815072
+bowler,13,Brijesh Sharma,Anshul Kamboj,0.15646592936238402,limited,limited,low_pressure_exposure,standard,3/4,3/4,8,13,0.49626819295773905,-0.11583982990534958,0.13967169636554067
+bowler,14,Jofra Archer,Anshul Kamboj,0.2198318735492517,stronger,limited,standard,standard,2/4,3/4,30,56,0.12116655705045076,0.6254118517464651,-0.21392078907916856
+bowler,15,Shardul Thakur,Anshul Kamboj,0.2348687894838577,stronger,limited,standard,standard,3/4,3/4,29,48,0.2369640333208689,0.15877345943969923,0.2971416147654695
+bowler,16,Sean Abbott,Anshul Kamboj,0.2597966641094869,limited,limited,standard,standard,3/4,3/4,11,21,0.15085371256132163,0.4099855194471034,0.10766499268550511
+bowler,17,Shamar Joseph,Anshul Kamboj,0.2742511444377933,limited,limited,standard,standard,4/4,3/4,12,24,0.31244319556245603,0.23841165254151875,0.24384904844802335
+bowler,18,Ashwani Kumar,Anshul Kamboj,0.3162844450238753,limited,limited,low_pressure_exposure,standard,4/4,3/4,5,10,0.604145524527596,0.034450814865210955,0.3351668150636111
+bowler,19,Nitish Reddy,Anshul Kamboj,0.3311466533404317,stronger,limited,standard,standard,2/4,3/4,22,33,0.10639188709541658,0.5021774998430721,0.29783696348054667
+bowler,20,Gudakesh Motie,Anshul Kamboj,0.38388401102285585,limited,limited,standard,standard,3/4,3/4,11,38,0.2346536193598845,0.6713193721583104,0.19750981039382287
