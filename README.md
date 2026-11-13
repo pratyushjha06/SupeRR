@@ -280,3 +280,13 @@ python run_phase4_9_review.py
 ```
 
 Compares the rank-10 incumbent against every rank-11-to-20 challenger for batters and bowlers. Uses the balanced rating gap, alternate weighting sensitivity, reliability tier, uncertainty flags and match-level median diagnostics. It does not generate final Top-10 lists. See `reports/phase4_9_final_cutline_challenge.md` and `reports/PRESSURE-X_Phase4.9_Cutline_Challenge.xlsx`.
+
+## Phase 5 — Cut-line governance
+
+Run the decision-governance review after the Phase 4.9 outputs are present:
+
+```powershell
+python run_phase5_governance.py
+```
+
+This produces a reproducible cut-line decision CSV/JSON and a submission-readiness report. The balanced rating remains primary. A practical-tie tolerance of 0.001 rating points is explicitly disclosed as an analyst-selected governance rule, not a statistical confidence interval. Phase 5 does not silently overwrite the underlying Phase 4 rankings or create a final Top 10.
