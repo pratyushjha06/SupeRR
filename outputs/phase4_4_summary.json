@@ -7,13 +7,13 @@
       "deliveries": 87687,
       "matches": 371,
       "eligible_batters": 79,
-      "eligible_bowlers": 108
+      "eligible_bowlers": 107
     },
     "T20I": {
       "deliveries": 106327,
       "matches": 482,
       "eligible_batters": 96,
-      "eligible_bowlers": 153
+      "eligible_bowlers": 152
     }
   },
   "ipl_t20i_top10_overlap_batters": 0,

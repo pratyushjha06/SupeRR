@@ -42,7 +42,7 @@ The project applies IPL and T20I scope as required. It currently pools those for
 ## 4. Pressure definition — what is defensible and what needs explanation
 
 The current model uses two distinct heuristics:
-- First innings: wicket-loss pressure (35%), innings progress (35%), and scoring-rate deficit against the competition-season median first-innings run rate (30%).
+- First innings: wicket-loss pressure (35%), innings progress (35%), and scoring-rate deficit against the historical competition-season median first-innings run rate from strictly earlier match dates only (30%).
 - Chases: required-run-rate intensity (35%), wickets lost (25%), time scarcity (20%), and required-vs-current run-rate gap (20%).
 
 It classifies pressure into low, moderate, high and very-high score bands. This satisfies the brief's request that the team define pressure, but the methodology report must explicitly justify the chosen weights and thresholds.
@@ -50,7 +50,7 @@ It classifies pressure into low, moderate, high and very-high score bands. This 
 Limitations to disclose:
 - First-innings pressure is a heuristic; it does not directly include match closeness or target context.
 - Chase pressure uses required rate, wickets and time, but the current model does not explicitly model match win probability or the actual closeness of the contest.
-- Competition-season median first-innings run rate is a baseline, not a full venue, opponent or innings-phase model.
+- The par reference uses only completed first innings on strictly earlier dates in the same competition-season; the first three matches use the documented 8.0 runs/over fallback. It is not a full venue, opponent or innings-phase model.
 - The pressure labels describe match context, not whether an individual player performed well.
 
 ## 5. Candidate readiness — balanced versus stronger-tier views

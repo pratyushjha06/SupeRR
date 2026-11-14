@@ -1,11 +1,11 @@
 role,omitted_rank,omitted_candidate,cutoff_candidate,balanced_rating_gap_vs_cutoff,omitted_reliability,cutoff_reliability,omitted_uncertainty,cutoff_uncertainty,omitted_match_favourable,cutoff_match_favourable,omitted_pressure_matches,omitted_normal_matches,rating_wicket_impact_gap_vs_cutoff,rating_control_gap_vs_cutoff,rating_equal_gap_vs_cutoff
-bowler,11,Sai Kishore,Anshul Kamboj,4.566151590412737e-05,limited,limited,standard,standard,4/4,3/4,10,23,0.02508601672598676,-0.14311820794616992,0.19287598567936248
-bowler,12,Akeal Hosein,Anshul Kamboj,0.04483304021498569,limited,limited,standard,standard,2/4,3/4,14,79,-0.008672283640778655,0.18145873661319079,0.11426819167815072
-bowler,13,Brijesh Sharma,Anshul Kamboj,0.15646592936238402,limited,limited,low_pressure_exposure,standard,3/4,3/4,8,13,0.49626819295773905,-0.11583982990534958,0.13967169636554067
-bowler,14,Jofra Archer,Anshul Kamboj,0.2198318735492517,stronger,limited,standard,standard,2/4,3/4,30,56,0.12116655705045076,0.6254118517464651,-0.21392078907916856
-bowler,15,Shardul Thakur,Anshul Kamboj,0.2348687894838577,stronger,limited,standard,standard,3/4,3/4,29,48,0.2369640333208689,0.15877345943969923,0.2971416147654695
-bowler,16,Sean Abbott,Anshul Kamboj,0.2597966641094869,limited,limited,standard,standard,3/4,3/4,11,21,0.15085371256132163,0.4099855194471034,0.10766499268550511
-bowler,17,Shamar Joseph,Anshul Kamboj,0.2742511444377933,limited,limited,standard,standard,4/4,3/4,12,24,0.31244319556245603,0.23841165254151875,0.24384904844802335
-bowler,18,Ashwani Kumar,Anshul Kamboj,0.3162844450238753,limited,limited,low_pressure_exposure,standard,4/4,3/4,5,10,0.604145524527596,0.034450814865210955,0.3351668150636111
-bowler,19,Nitish Reddy,Anshul Kamboj,0.3311466533404317,stronger,limited,standard,standard,2/4,3/4,22,33,0.10639188709541658,0.5021774998430721,0.29783696348054667
-bowler,20,Gudakesh Motie,Anshul Kamboj,0.38388401102285585,limited,limited,standard,standard,3/4,3/4,11,38,0.2346536193598845,0.6713193721583104,0.19750981039382287
+bowler,11,Jamie Overton,Shardul Thakur,0.05513717205743229,stronger,stronger,standard,standard,4/4,3/4,14,26,0.14526801483251428,0.28563942956163,-0.30623648687607474
+bowler,12,Akeal Hosein,Shardul Thakur,0.11865066110797406,limited,stronger,standard,standard,2/4,3/4,15,79,0.014580921955326787,0.3227908773503383,0.21402061896349256
+bowler,13,Gerald Coetzee,Shardul Thakur,0.13221460267607532,limited,stronger,standard,standard,2/4,3/4,15,29,-0.015585413207213739,0.5901657695674638,-0.2785503200681343
+bowler,14,Jofra Archer,Shardul Thakur,0.1344887018543517,stronger,stronger,standard,standard,2/4,3/4,30,56,0.03357596469249935,0.5740219255380761,-0.2903957673782378
+bowler,15,Matthew Humphreys,Shardul Thakur,0.1533188132224026,limited,stronger,low_pressure_exposure,standard,4/4,3/4,5,14,0.0032722400735962776,0.16805769546964067,0.34681264056053673
+bowler,16,Sai Kishore,Shardul Thakur,0.19494405178788266,limited,stronger,standard,standard,4/4,3/4,10,23,0.24773211415219576,0.07104374119237455,0.3771745403745095
+bowler,17,Sean Abbott,Shardul Thakur,0.221932267866237,limited,stronger,standard,standard,3/4,3/4,11,21,0.08668891189726713,0.4154957949518152,0.08577255178355347
+bowler,18,Nitish Reddy,Shardul Thakur,0.2573074328730638,stronger,stronger,standard,standard,2/4,3/4,21,33,0.05938166460708105,0.5035800046770413,0.1320468336690852
+bowler,19,Rasikh Salam,Shardul Thakur,0.3704744343268185,stronger,stronger,standard,standard,4/4,3/4,13,22,0.12513594429247998,0.5316994650300717,0.4427098932018405
+bowler,20,Gudakesh Motie,Shardul Thakur,0.390707762988326,limited,stronger,standard,standard,3/4,3/4,11,38,0.2127536618909145,0.7391955301826518,0.2006106522443587

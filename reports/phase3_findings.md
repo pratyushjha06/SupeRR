@@ -3,7 +3,7 @@
 - Input deliveries: 194,014
 - Eligible regulation deliveries: 193,933
 - Batters with high/very-high pressure exposure: 673
-- Bowlers with high/very-high pressure exposure: 467
+- Bowlers with high/very-high pressure exposure: 465
 
 ## Batting methodology
 - Batter runs use the observed `runs` field; team runs are `runs + extras1_runs + extras_2_runs`.

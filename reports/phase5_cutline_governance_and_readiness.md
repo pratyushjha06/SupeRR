@@ -1,57 +1,43 @@
-# PRESSURE-X Phase 5 — Cut-line governance and submission readiness
+# PRESSURE-X Phase 5 — Cut-line governance (recomputed after leakage correction)
 
-## Purpose and boundary
-This phase formalises how close rank-10/rank-11 decisions are discussed. It does not change the Phase 4 balanced-rating formula, eligibility thresholds, pressure labels, or underlying candidate ranks. It does not publish a final Top 10.
+## Governance rule
 
-## Pre-declared practical-tie policy
-The balanced rating remains the primary ranking measure. For governance review only, a rank-10/rank-11 rating gap of **0.001 points or less** is treated as a practical tie. This is an analyst-selected tolerance for avoiding false precision in nearly identical displayed scores; it is **not** a confidence interval, p-value, or claim of statistical equivalence.
+The balanced rating is the primary ordering. A rank-10/rank-11 gap of **0.001 points or less** triggers a practical-tie evidence review. This tolerance is analyst-selected; it is not a confidence interval, p-value, or claim of statistical equivalence. Outside that band, retain the balanced-score ordering and disclose the challenger evidence.
 
-Within that band, apply this order:
-1. Stronger reliability tier.
-2. Greater pressure exposure (legal balls for bowlers; balls faced for batters).
-3. More pressure-exposure matches.
-4. More favourable match-level median components.
-5. If still tied, retain the higher unrounded balanced rating.
+## Batter cut-line
 
-Outside the band, retain the balanced-rating order and explain the challenger as a cut-line sensitivity, not a tie.
+- Rank 10: **Mark Chapman** (limited reliability)
+- Rank 11 challenger: **Ryan Burl** (stronger reliability)
+- Balanced rating gap: **0.059202**; practical tie: **False**
+- Pressure exposure: Mark Chapman 99 balls / 9 matches; Ryan Burl 187 balls / 16 matches.
+- Match-level favourable components: Mark Chapman 4/4; Ryan Burl 3/4.
+- Alternative-weight gaps (rank 10 minus rank 11): scoring-impact 0.021855; survival 0.096549; equal 0.036424.
+- Governance outcome: retain **Mark Chapman** by the primary balanced rating. Disclose that the omitted challenger has a stronger reliability tier; do not hide this trade-off.
 
-## Batter cut-line: Aiden Markram vs Dasun Shanaka
-- Balanced-rating gap (incumbent minus challenger): **0.014353**.
-- Practical-tie tolerance: **0.001**.
-- Reliability: incumbent **stronger**; challenger **stronger**.
-- Match-level favourable components: incumbent **3/4**; challenger **3/4**.
-- Decision: **retain Aiden Markram provisionally**. The gap is outside the practical-tie band, and the incumbent remains ahead under the alternative weighting checks recorded in Phase 4.9. Explicitly disclose Dasun Shanaka as the closest challenger.
+## Bowler cut-line
 
-## Bowler cut-line: Anshul Kamboj vs Sai Kishore
-- Balanced-rating gap (incumbent minus challenger): **0.00004566** — inside the practical-tie band.
-- Strict balanced-score order: **Anshul Kamboj** remains rank 10, ahead by a tiny amount.
-- Both candidates have **limited** reliability; do not describe either as high-confidence.
-- Pressure exposure: Anshul Kamboj **85 legal balls / 8 matches**; Sai Kishore **98 legal balls / 10 matches**.
-- Match-level favourable components: Anshul Kamboj **3/4**; Sai Kishore **4/4**.
-- Supporting descriptive context: pressure economy Anshul Kamboj **8.188** vs Sai Kishore **7.286**; pressure wickets/over **0.706** vs **0.735**.
-- Governance recommendation under the declared tie policy: **Sai Kishore**. Keep the strict score rank and governance recommendation separately visible; if the submission requires a single ordered list, state this tie-break rule in the methodology before presenting the list. The data do not justify claiming a decisive performance gap.
+- Rank 10: **Shardul Thakur** (stronger reliability)
+- Rank 11 challenger: **Jamie Overton** (stronger reliability)
+- Balanced rating gap: **0.055137**; practical tie: **False**
+- Pressure exposure: Shardul Thakur 237 legal balls / 29 matches; Jamie Overton 153 legal balls / 14 matches.
+- Match-level favourable components: Shardul Thakur 3/4; Jamie Overton 4/4.
+- Alternative-weight gaps (rank 10 minus rank 11): wicket-impact 0.145268; control 0.285639; equal -0.306236.
+- Pressure economy: Shardul Thakur 9.316; Jamie Overton 7.294.
+- Pressure wickets/over: Shardul Thakur 0.532; Jamie Overton 0.588.
+- Governance outcome: retain **Shardul Thakur** by the primary balanced rating and disclose the challenger's stronger match-level evidence.
 
-## Interpretation and limitations
+## Important reanalysis note
+
+The Phase 2 first-innings par-rate reference was corrected to use only completed first-innings matches with strictly earlier match dates in the same competition-season. At least three prior matches are required; otherwise a documented neutral fallback of 8.0 runs per over is used. All downstream phases were rerun from the original supplied data. Consequently, candidate ranks and cut-line gaps differ from the earlier Phase 5/6 draft; older draft ranking statements must not be reused.
+
+## Limitations
+
 - Match-level medians are descriptive robustness evidence, not causal proof or a significance test.
-- The rating gap alone does not quantify uncertainty. Reliability tiers and exposure counts must accompany the decision.
-- The tolerance is a transparent editorial rule. A reviewer can reproduce the result and challenge the tolerance without altering raw metrics.
-- Format/season analyses remain separate evidence. Independently standardised format-year scores must not be averaged as if they shared one scale.
-- Some individual years lack enough eligible batters for a full Top 10 under the existing thresholds; do not lower thresholds silently.
-- IPL and T20I are the in-scope competitions. Out-of-scope T20 competitions remain excluded.
+- Reliability tiers are exposure-based categories, not formal uncertainty intervals.
+- IPL/T20I format-year scores are independently standardised and must not be averaged across subsets.
+- Some format-year subsets do not have ten eligible batters under the fixed thresholds; thresholds are not silently relaxed.
 
-## Submission-readiness checklist
-- [ ] State the IPL/T20I scope and date range exactly as defined by the supplied data.
-- [ ] Define pressure states and explain the innings-specific pressure calculation.
-- [ ] Explain batter and bowler metric definitions, including wides, oversteps, extras, dismissals, and credited wickets.
-- [ ] Show normal vs pressure baselines, sample sizes, reliability tiers, and uncertainty flags for every selected player.
-- [ ] Explain the rating components, directionality, shrinkage, robust standardisation, and balanced weights.
-- [ ] Report alternate-weighting and exposure-threshold sensitivity without averaging those rankings into the main score.
-- [ ] Include format/season coverage and explain years with fewer than ten eligible batters.
-- [ ] Include match-level validation as supporting evidence, not causal inference.
-- [ ] Disclose the rank-10/rank-11 cut-line comparisons and the pre-declared tie policy.
-- [ ] Re-run scripts and tests from the clean project folder before submission.
+## Output files
 
-## Files generated
 - `outputs/phase5_cutline_governance_decisions.csv`
 - `outputs/phase5_governance_decisions.json`
-- `reports/phase5_cutline_governance_and_readiness.md`

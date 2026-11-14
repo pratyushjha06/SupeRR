@@ -1,11 +1,11 @@
 role,omitted_rank,omitted_candidate,cutoff_candidate,balanced_rating_gap_vs_cutoff,omitted_reliability,cutoff_reliability,omitted_uncertainty,cutoff_uncertainty,omitted_match_favourable,cutoff_match_favourable,omitted_pressure_matches,omitted_normal_matches,rating_scoring_impact_gap_vs_cutoff,rating_survival_gap_vs_cutoff,rating_equal_gap_vs_cutoff
-batter,11,Dasun Shanaka,Aiden Markram,0.014353234713528007,stronger,stronger,standard,standard,3/4,3/4,32,48,0.004620984917438342,0.024085484509617228,0.0077016415290631635
-batter,12,Curtis Campher,Aiden Markram,0.021354633835104053,limited,stronger,standard,standard,4/4,3/4,8,34,0.08029495710549472,-0.024740938077305374,0.09100909064922069
-batter,13,Sikandar Raza,Aiden Markram,0.0420151616481248,stronger,stronger,standard,standard,3/4,3/4,15,56,0.018451948384736738,0.06557837491151264,0.03075324730789397
-batter,14,Jaker Ali Anik,Aiden Markram,0.1281375175638928,stronger,stronger,standard,standard,3/4,3/4,17,30,0.06151312634262096,0.19476190878516575,0.10252187723770145
-batter,15,Babar Azam,Aiden Markram,0.15999605614168488,limited,stronger,low_pressure_exposure,standard,4/4,3/4,6,52,0.07744239563151689,0.2425497166518531,0.12907065938586104
-batter,16,Gulbadin Naib,Aiden Markram,0.16364127314899002,limited,stronger,low_pressure_exposure,standard,2/4,3/4,5,13,0.5560181117213823,-0.20422957325725144,0.35024458560349925
-batter,17,Tristan Stubbs,Aiden Markram,0.18625350082368008,stronger,stronger,standard,standard,3/4,3/4,30,57,0.125510279248652,0.24699672239870663,0.2091837987477536
-batter,18,M Shahrukh Khan,Aiden Markram,0.1870652258656349,stronger,stronger,standard,standard,3/4,3/4,22,33,0.09097698049349168,0.2831534712377779,0.15162830082248613
-batter,19,Ryan Burl,Aiden Markram,0.19715611384443443,stronger,stronger,standard,standard,3/4,3/4,17,41,0.12758138158440202,0.26673084610446707,0.21263563597400315
-batter,20,Marco Jansen,Aiden Markram,0.24225629118630643,limited,stronger,standard,standard,2/4,3/4,28,10,0.3536611747691696,0.17184074024591633,0.31706196415268884
+batter,11,Ryan Burl,Mark Chapman,0.05920185664684796,stronger,limited,standard,standard,3/4,4/4,16,41,0.02185460592587285,0.09654910736782285,0.03642434320978838
+batter,12,Jaker Ali Anik,Mark Chapman,0.060193592895034786,stronger,limited,standard,standard,3/4,4/4,17,30,-0.009309693411009512,0.12969687920107864,-0.01551615568501541
+batter,13,Sikandar Raza,Mark Chapman,0.06335784388207877,stronger,limited,standard,standard,3/4,4/4,16,56,-0.007727567917487299,0.13444325568164484,-0.012879279862478388
+batter,14,Aiden Markram,Mark Chapman,0.06558152290130836,stronger,limited,standard,standard,3/4,4/4,15,91,0.007315165066553941,0.12384788073606234,0.012191941777590198
+batter,15,Curtis Campher,Mark Chapman,0.06644830906852972,limited,limited,standard,standard,4/4,4/4,8,34,0.11226912484545926,0.04417982984538771,0.10860741956313946
+batter,16,George Dockrell,Mark Chapman,0.10489423998591163,stronger,limited,standard,standard,3/4,4/4,17,36,0.10529083704617603,0.13085484490043142,0.0876273884943446
+batter,17,Ayush Badoni,Mark Chapman,0.10859686654466638,stronger,limited,standard,standard,3/4,4/4,29,48,0.014891943413806175,0.2023017896755257,0.024819905689677402
+batter,18,Dasun Shanaka,Mark Chapman,0.1133692352049227,stronger,limited,standard,standard,3/4,4/4,32,49,0.02550391827459686,0.201234552135249,0.04250653045766217
+batter,19,Babar Azam,Mark Chapman,0.163410205816112,limited,limited,low_pressure_exposure,standard,4/4,4/4,6,52,0.04229861304952909,0.2845217985826942,0.07049768841588211
+batter,20,Tristan Stubbs,Mark Chapman,0.17429116278850265,stronger,limited,standard,standard,3/4,4/4,29,58,0.09042261956610886,0.2581597060108951,0.15070436594351633

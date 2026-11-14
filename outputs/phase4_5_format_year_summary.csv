@@ -1,11 +1,11 @@
 format,calendar_year,matches,deliveries,eligible_batters,eligible_bowlers,batter_top10_complete,bowler_top10_complete
 IPL,2022,74,17909,19,35,True,True
-IPL,2023,74,17863,20,35,True,True
+IPL,2023,74,17863,19,37,True,True
 IPL,2024,74,17103,18,34,True,True
-IPL,2025,75,17285,20,33,True,True
+IPL,2025,75,17285,19,32,True,True
 IPL,2026,74,17527,11,32,True,True
-T20I,2022,106,24556,18,38,True,True
+T20I,2022,106,24556,17,35,True,True
 T20I,2023,66,15125,5,15,False,True
-T20I,2024,111,24173,13,43,True,True
-T20I,2025,127,26914,16,44,True,True
-T20I,2026,72,15559,8,18,False,True
+T20I,2024,111,24173,12,41,True,True
+T20I,2025,127,26914,16,43,True,True
+T20I,2026,72,15559,7,16,False,True

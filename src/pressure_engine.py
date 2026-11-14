@@ -134,19 +134,39 @@ def classify_pressure(state: pd.DataFrame) -> pd.DataFrame:
         default="unsupported_innings"
     )
 
-    # First innings: wickets lost, innings progress, and scoring below competition-season par.
+    # First innings: wickets lost, innings progress, and scoring below a
+    # historical competition-season par. Only strictly earlier match dates
+    # may contribute to the reference, preventing future-information leakage.
     first_mask = d["innings"].eq(1) & ~d["is_super_over"]
-    # Estimate par from median first-innings final run rate within competition and season.
-    innings_totals = d.loc[first_mask].groupby(["match_id","comp_id","season"], as_index=False).agg(
-        final_runs=("team_runs_this_delivery","sum"),
-        legal_balls=("is_legal_delivery","sum"),
-        max_balls=("innings_max_legal_balls","max")
+    if "match_date" not in d.columns:
+        d["match_date"] = pd.NaT
+    innings_totals = d.loc[first_mask].groupby(
+        ["match_id", "comp_id", "season", "match_date"], as_index=False
+    ).agg(
+        final_runs=("team_runs_this_delivery", "sum"),
+        legal_balls=("is_legal_delivery", "sum"),
     )
-    innings_totals["final_rr"] = innings_totals["final_runs"] * 6 / innings_totals["legal_balls"].replace(0,np.nan)
-    par = innings_totals.groupby(["comp_id","season"])["final_rr"].median().rename("par_run_rate").reset_index()
-    d = d.merge(par, on=["comp_id","season"], how="left", validate="many_to_one")
-    fallback = innings_totals["final_rr"].median()
-    d["par_run_rate"] = d["par_run_rate"].fillna(fallback if pd.notna(fallback) else 8.0)
+    innings_totals["match_date"] = pd.to_datetime(innings_totals["match_date"], errors="coerce")
+    innings_totals["final_rr"] = innings_totals["final_runs"] * 6 / innings_totals["legal_balls"].replace(0, np.nan)
+    innings_totals["par_run_rate"] = np.nan
+    # Require at least three earlier completed matches before trusting a
+    # competition-season empirical reference; otherwise use the documented
+    # neutral fallback of 8.0 runs/over. Same-date matches are excluded.
+    for _, idx in innings_totals.groupby(["comp_id", "season"], dropna=False).groups.items():
+        grp = innings_totals.loc[idx].sort_values("match_date", kind="stable")
+        dates = grp["match_date"]
+        for row_idx in grp.index:
+            current_date = innings_totals.at[row_idx, "match_date"]
+            if pd.isna(current_date):
+                continue
+            prior = grp.loc[dates < current_date, "final_rr"].dropna()
+            if len(prior) >= 3:
+                innings_totals.at[row_idx, "par_run_rate"] = float(prior.median())
+    d = d.merge(
+        innings_totals[["match_id", "comp_id", "season", "par_run_rate"]],
+        on=["match_id", "comp_id", "season"], how="left", validate="many_to_one"
+    )
+    d["par_run_rate"] = d["par_run_rate"].fillna(8.0)
 
     progress = _clamp01(d["legal_balls_before"] / d["innings_max_legal_balls"].replace(0,np.nan)).fillna(0)
     wicket_pressure = _clamp01(d["wickets_before"] / 9.0)
@@ -235,7 +255,7 @@ def run_phase2(data_dir: Path, output_dir: Path, report_dir: Path) -> dict:
         "- Wickets lost are reconstructed from the recorded `is_wicket` flag. Bowler-credit treatment is deferred to the bowling model.",
         "",
         "## Pressure model",
-        "- First innings: 35% wicket-loss pressure, 35% innings progress, 30% scoring-rate deficit against competition-season median first-innings run rate.",
+        "- First innings: 35% wicket-loss pressure, 35% innings progress, 30% scoring-rate deficit against a historical competition-season par rate computed from strictly earlier match dates only.",
         "- Chases: 35% required-run-rate intensity, 25% wickets lost, 20% time scarcity, 20% required-vs-current run-rate gap.",
         "- Score bands: low (0–25), moderate (25–50), high (50–75), very high (75–100).",
         "- These are transparent initial heuristic weights and require sensitivity analysis in later phases.",
@@ -244,7 +264,7 @@ def run_phase2(data_dir: Path, output_dir: Path, report_dir: Path) -> dict:
         "- The data pack does not include a formal data dictionary. The field semantics above are inferred from observed row patterns.",
         "- Revised target and revised overs are used when populated; otherwise a T20/T20I default of 20 overs is used.",
         "- Innings 3 and 4 are treated as Super Overs based on the observed tied-match examples.",
-        "- First-innings par is estimated from median final run rate within competition-season. Sparse groups fall back to the overall median.",
+        "- First-innings par is the median final run rate from completed first innings on strictly earlier dates in the same competition-season; same-date matches are excluded. At least three prior matches are required; otherwise the documented fallback is 8.0 runs per over.",
         "- Phase 2 labels match situation pressure, not an individual player's performance quality.",
         "",
         "## Output files",

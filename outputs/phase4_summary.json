@@ -3,22 +3,22 @@
   "classified_deliveries_before_scope_filter": 200999,
   "classified_deliveries_after_scope_filter": 194014,
   "excluded_out_of_scope_deliveries": 6985,
-  "batter_candidates_pressure_eligible": 245,
-  "bowler_candidates_pressure_eligible": 210,
-  "batter_candidates_final_eligible": 151,
-  "bowler_candidates_final_eligible": 210,
-  "batter_candidates_excluded_for_baseline": 94,
+  "batter_candidates_pressure_eligible": 246,
+  "bowler_candidates_pressure_eligible": 209,
+  "batter_candidates_final_eligible": 153,
+  "bowler_candidates_final_eligible": 209,
+  "batter_candidates_excluded_for_baseline": 93,
   "bowler_candidates_excluded_for_baseline": 0,
   "batter_reliability_tiers": {
-    "limited": 97,
-    "stronger": 54
+    "limited": 101,
+    "stronger": 52
   },
   "bowler_reliability_tiers": {
-    "limited": 112,
+    "limited": 111,
     "stronger": 98
   },
   "batter_consistency_records": 671,
-  "bowler_consistency_records": 467,
+  "bowler_consistency_records": 465,
   "batter_min_pressure_balls": 30,
   "bowler_min_pressure_legal_balls": 30,
   "batter_min_normal_balls": 30,

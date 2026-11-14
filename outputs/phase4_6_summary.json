@@ -6,15 +6,15 @@
   "batter_top20": {
     "role": "batter",
     "top20_candidates": 20,
-    "both_formats_30plus": 6,
-    "single_format_30plus": 14,
+    "both_formats_30plus": 5,
+    "single_format_30plus": 15,
     "below_30_each_format": 0
   },
   "bowler_top20": {
     "role": "bowler",
     "top20_candidates": 20,
-    "both_formats_30plus": 5,
-    "single_format_30plus": 15,
+    "both_formats_30plus": 6,
+    "single_format_30plus": 14,
     "below_30_each_format": 0
   },
   "rating_aggregation": "No arithmetic averaging of IPL and T20I ratings; robust z-scores are recalculated within each subset and are not on a common scale.",

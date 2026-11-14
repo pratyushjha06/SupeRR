@@ -74,7 +74,11 @@ Keep the original raw CSV files unchanged. All generated profiles and charts are
 
 ## Phase 2 — Pressure classification
 
-Run `python run_phase2.py` after Phase 1 dependencies are installed. This reconstructs delivery-level pre-ball match state, treats `wide` and `Overstep` as illegal deliveries, excludes innings 3/4 from regulation pressure labels, and writes pressure outputs under `outputs/`. See `reports/phase2_findings.md` and `outputs/scoring_semantics_audit.json` for assumptions and observed data patterns.
+Run `python run_phase2.py` after Phase 1 dependencies are installed. This reconstructs delivery-level pre-ball match state, treats `wide` and `Overstep` as illegal deliveries, and excludes innings 3/4 from regulation pressure labels.
+
+**First-innings par-rate leakage safeguard:** the competition-season par reference is calculated only from completed first innings on strictly earlier match dates. Same-date matches are excluded. At least three earlier matches are required; otherwise the documented fallback is 8.0 runs per over. This prevents the current innings or future matches from influencing an earlier delivery's pressure score. The fallback affects the opening matches in each competition-season and is disclosed as a limitation.
+
+See `reports/phase2_findings.md`, `outputs/scoring_semantics_audit.json`, and `reports/phase6_final_technical_audit.md` for assumptions and audit findings.
 
 
 ## Phase 3 — Player performance analysis

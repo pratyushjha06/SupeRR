@@ -9,7 +9,7 @@
 - Wickets lost are reconstructed from the recorded `is_wicket` flag. Bowler-credit treatment is deferred to the bowling model.
 
 ## Pressure model
-- First innings: 35% wicket-loss pressure, 35% innings progress, 30% scoring-rate deficit against competition-season median first-innings run rate.
+- First innings: 35% wicket-loss pressure, 35% innings progress, 30% scoring-rate deficit against a historical competition-season par rate computed from strictly earlier match dates only.
 - Chases: 35% required-run-rate intensity, 25% wickets lost, 20% time scarcity, 20% required-vs-current run-rate gap.
 - Score bands: low (0–25), moderate (25–50), high (50–75), very high (75–100).
 - These are transparent initial heuristic weights and require sensitivity analysis in later phases.
@@ -18,7 +18,7 @@
 - The data pack does not include a formal data dictionary. The field semantics above are inferred from observed row patterns.
 - Revised target and revised overs are used when populated; otherwise a T20/T20I default of 20 overs is used.
 - Innings 3 and 4 are treated as Super Overs based on the observed tied-match examples.
-- First-innings par is estimated from median final run rate within competition-season. Sparse groups fall back to the overall median.
+- First-innings par is the median final run rate from completed first innings on strictly earlier dates in the same competition-season; same-date matches are excluded. At least three prior matches are required; otherwise the documented fallback is 8.0 runs per over.
 - Phase 2 labels match situation pressure, not an individual player's performance quality.
 
 ## Output files

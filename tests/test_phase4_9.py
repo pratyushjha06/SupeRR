@@ -8,15 +8,19 @@ def test_cutline_challengers_cover_ranks_11_to_20():
         d=pd.read_csv(OUT/fn)
         assert d["omitted_rank"].tolist()==list(range(11,21))
 
-def test_bowler_cutline_is_near_tie():
+def test_recomputed_bowler_cutline_matches_leakage_corrected_analysis():
     d=pd.read_csv(OUT/"phase4_9_bowler_cutline_challengers.csv")
-    sai=d.loc[d.omitted_candidate.eq("Sai Kishore")].iloc[0]
-    assert abs(sai["balanced_rating_gap_vs_cutoff"])<0.001
+    row=d.loc[d.omitted_rank.eq(11)].iloc[0]
+    assert row["cutoff_candidate"] == "Shardul Thakur"
+    assert row["omitted_candidate"] == "Jamie Overton"
+    assert row["balanced_rating_gap_vs_cutoff"] > 0.001
 
-def test_batter_cutline_is_close():
+def test_recomputed_batter_cutline_matches_leakage_corrected_analysis():
     d=pd.read_csv(OUT/"phase4_9_batter_cutline_challengers.csv")
-    dasun=d.loc[d.omitted_candidate.eq("Dasun Shanaka")].iloc[0]
-    assert dasun["balanced_rating_gap_vs_cutoff"]<0.02
+    row=d.loc[d.omitted_rank.eq(11)].iloc[0]
+    assert row["cutoff_candidate"] == "Mark Chapman"
+    assert row["omitted_candidate"] == "Ryan Burl"
+    assert row["balanced_rating_gap_vs_cutoff"] > 0.001
 
 def test_no_final_top10_created():
     report=(ROOT/"reports"/"phase4_9_final_cutline_challenge.md").read_text(encoding="utf-8")

@@ -17,9 +17,10 @@ def test_phase5_outputs_exist_and_cutline_decisions_are_auditable():
     assert 'not a statistically estimated confidence interval' in data['important_caveat']
 
 
-def test_phase5_keeps_batter_incumbent_and_flags_bowler_near_tie():
+def test_phase5_preserves_recomputed_balanced_score_order():
     df = pd.read_csv(ROOT / 'outputs/phase5_cutline_governance_decisions.csv').set_index('role')
-    assert df.loc['batter', 'governance_outcome'] == 'Aiden Markram'
-    assert df.loc['bowler', 'strict_score_order'] == 'Anshul Kamboj'
-    assert df.loc['bowler', 'governance_outcome'] == 'Sai Kishore'
-    assert abs(df.loc['bowler', 'balanced_rating_gap_incumbent_minus_challenger']) <= 0.001
+    assert df.loc['batter', 'governance_outcome'] == 'Mark Chapman'
+    assert df.loc['batter', 'rank11_challenger'] == 'Ryan Burl'
+    assert df.loc['bowler', 'governance_outcome'] == 'Shardul Thakur'
+    assert df.loc['bowler', 'rank11_challenger'] == 'Jamie Overton'
+    assert abs(df.loc['bowler', 'balanced_rating_gap_rank10_minus_rank11']) > 0.001

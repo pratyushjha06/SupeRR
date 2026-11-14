@@ -4,10 +4,10 @@
   "eligible_rows": 200904,
   "super_over_rows": 38,
   "pressure_level_counts": {
-    "moderate": 83676,
-    "low": 78650,
-    "high": 28826,
-    "very_high": 9752
+    "moderate": 83023,
+    "low": 79583,
+    "high": 28624,
+    "very_high": 9674
   },
   "pressure_context_counts": {
     "first_innings": 105727,
